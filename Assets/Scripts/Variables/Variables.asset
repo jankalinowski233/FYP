@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab11114e60c16c64c8c3bd9311a90eba, type: 3}
+  m_Name: Variables
+  m_EditorClassIdentifier: 
+  hiddenText: "using UnityEngine;\nusing System.Collections.Generic;\n\npublic class
+    TestClass\n{\n\tstatic GameObject cube = GameObject.FindGameObjectWithTag(\"Player\");\n\nstatic
+    List<MonoBehaviour> m = new List<MonoBehaviour>();\n\n\tpublic static void TestFunction()\n\t{\t\n\t\tMove
+    move =\tcube.gameObject.AddComponent<Move>();\n\t\tMonoBehaviour[] b = \tcube.gameObject.GetComponents<MonoBehaviour>();\n\n\tforeach(MonoBehaviour
+    mb in b)\n\t{\n\t\tm.Add(mb);\n\t}\n\t\n\t\tif(m.Count > 2)\n\t\t{\tGameObject.Destroy(m[1]);\t\t\tm.RemoveAt(1);\n\t\t}\n\ncube.gameObject.GetComponent<PlayerMove>().moveSpeed
+    = move.speed;\n\n\t}\n}"
+  visibleText: "public class Move : MonoBehaviour\n{\t\n\tpublic float speed = 1.0f;\n}"
+  defaultText: "public class Move : MonoBehaviour\n{\t\n\tpublic float speed = 0;\n}"
