@@ -35,7 +35,7 @@ public class SyntaxHighlighter
         for (int i = 0; i < words.Length; i++)
         {
             Color c = Color.clear;
-            words[i].Trim(' ');
+
             if (words[i] == "float" || words[i] == "class" || words[i] == "public")
             {
                 c = theme.variableColor;
@@ -43,6 +43,10 @@ public class SyntaxHighlighter
             else if(words[i] == "MonoBehaviour")
             {
                 c = theme.mbColor;
+            }
+            else if(words[i] == "if")
+            {
+                c = theme.conditionColor;
             }
 
             if (c != Color.clear)

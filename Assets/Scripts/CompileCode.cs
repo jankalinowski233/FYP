@@ -53,10 +53,11 @@ public class CompileCode : MonoBehaviour
             methods.RemoveAt(0);
         }
 
+
         //create a delegate and invoke it
         //Action is a special delegate, that can invoke a void function or in general take up to 16 parameters of different types
         //While in a classic delegate users have to provide a parameter they're going to pass, Action overcomes that issue
-        foreach(MethodInfo method in methods)
+        foreach (MethodInfo method in methods)
         {
             Action codeAction = (Action)Delegate.CreateDelegate(typeof(Action), method);
 

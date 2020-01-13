@@ -7,4 +7,5 @@ public class SyntaxTheme : ScriptableObject
 {
     public Color variableColor;
     public Color mbColor;
+    public Color conditionColor;
 }
