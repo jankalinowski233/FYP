@@ -11,9 +11,11 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class CompileCode : MonoBehaviour
 {
+    public SyntaxTheme codeTheme;
     public TextContainer container;
 
     public InputField codeField;
+    public Text codeToDisplay;
     public Text errorText;
 
     List<MethodInfo> methods;
@@ -25,6 +27,14 @@ public class CompileCode : MonoBehaviour
 
         codeField.text = container.visibleText;
         errorText.text = "";
+
+        codeToDisplay.supportRichText = true;
+        codeToDisplay.text = codeField.text;
+    }
+
+    private void Update()
+    {
+        codeToDisplay.text = SyntaxHighlighter.HighlightCode(codeField.text, codeTheme);
     }
 
     public void Run()
@@ -99,6 +109,4 @@ public class CompileCode : MonoBehaviour
         container.visibleText = container.defaultText;
         codeField.text = container.visibleText;
     }
-
-    
 }

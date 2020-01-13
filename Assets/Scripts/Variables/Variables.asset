@@ -18,5 +18,7 @@ MonoBehaviour:
     move =\tcube.gameObject.AddComponent<Move>();\n\t\tMonoBehaviour[] b = \tcube.gameObject.GetComponents<MonoBehaviour>();\n\n\tforeach(MonoBehaviour
     mb in b)\n\t{\n\t\tm.Add(mb);\n\t}\n\t\n\t\tif(m.Count > 2)\n\t\t{\tGameObject.Destroy(m[1]);\t\t\tm.RemoveAt(1);\n\t\t}\n\ncube.gameObject.GetComponent<PlayerMove>().moveSpeed
     = move.speed;\n\n\t}\n}"
-  visibleText: "public class Move : MonoBehaviour\n{\t\n\tpublic float speed = 1.0f;\n}"
-  defaultText: "public class Move : MonoBehaviour\n{\t\n\tpublic float speed = 0;\n}"
+  visibleText: "\r public class Move : MonoBehaviour\n {\r\n     public float speed=
+    1.0f;\n     float x = 0;\n }"
+  defaultText: " public class Move : MonoBehaviour\n {\t\n\tpublic float speed = 0;\n
+    }"
