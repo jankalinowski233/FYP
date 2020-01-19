@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class LevelController : MonoBehaviour
     float goalProgress = 1.0f;
 
     bool invoked = false;
+
+    public Image healthbar;
 
     private void Start()
     {
@@ -35,5 +38,10 @@ public class LevelController : MonoBehaviour
     public void IncrementProgress(float value)
     {
         currentProgress += value;
+    }
+
+    public void UpdateHealthUI(float amount)
+    {
+        healthbar.fillAmount += 1.0f / amount;
     }
 }

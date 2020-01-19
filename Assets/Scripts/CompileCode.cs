@@ -35,6 +35,7 @@ public class CompileCode : MonoBehaviour
     private void Update()
     {
         codeToDisplay.text = SyntaxHighlighter.HighlightCode(codeField.text, codeTheme);
+        
     }
 
     public void Run()

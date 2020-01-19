@@ -7,24 +7,29 @@ public class PlayerMove : MonoBehaviour
     public Vector3 axis;
     public float moveSpeed;
 
-    bool transitioned = false;
     Animator anim;
+    Rigidbody rb;
+
 
     private void Start()
     {
         anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        transform.Translate(axis * moveSpeed * Time.deltaTime);
+        Vector3 temp = transform.position;
 
-        if(transitioned == false)
-            Transition();
-    }
+        if(axis.x > 0)
+            temp.x += axis.x * moveSpeed * Time.deltaTime;
+        else if(axis.y > 0)
+            temp.y += axis.y * moveSpeed * Time.deltaTime;
+        else if(axis.z > 0)
+            temp.z += axis.z * moveSpeed * Time.deltaTime;
 
-    void Transition()
-    {
+        transform.position = temp;
+
         anim.SetFloat("speed", moveSpeed);
     }
 }
