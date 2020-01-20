@@ -29,24 +29,50 @@ public class SyntaxHighlighter
         List<Vector2Int> wordStartEnd = new List<Vector2Int>();
 
         string[] words = line.Split(' ');
-
         int notSpace = 0;
 
         for (int i = 0; i < words.Length; i++)
         {
             Color c = Color.clear;
 
-            if (words[i] == "float" || words[i] == "class" || words[i] == "public")
+            if(words[i].StartsWith(Keywords.commentMark) == true)
             {
-                c = theme.variableColor;
+                line = line.TrimEnd(' ');
+                int beginning = line.IndexOf('/');
+                int end = line.Length;
+                wordStartEnd.Add(new Vector2Int(beginning, end));
+
+                c = theme.commentColor;
+                colors.Add(c);
+
+                continue;
             }
-            else if(words[i] == "MonoBehaviour")
+
+            for (int j = 0; j < Keywords.blueWords.Length; j++)
             {
-                c = theme.mbColor;
+                string word = Keywords.blueWords[j];
+                if (words[i] == word)
+                {
+                    c = theme.variableColor;
+                }
             }
-            else if(words[i] == "if")
+
+            for (int j = 0; j < Keywords.unityKeywords.Length; j++)
             {
-                c = theme.conditionColor;
+                string word = Keywords.unityKeywords[j];
+                if (words[i] == word)
+                {
+                    c = theme.unityKeyword;
+                }
+            }
+
+            for (int j = 0; j < Keywords.unityClasses.Length; j++)
+            {
+                string word = Keywords.unityClasses[j];
+                if (words[i] == word)
+                {
+                    c = theme.unityClass;
+                }
             }
 
             if (c != Color.clear)
@@ -61,21 +87,21 @@ public class SyntaxHighlighter
         if (colors.Count > 0)
         {
             notSpace = 0;
-            int colIndex = 0;
+            int colorIndex = 0;
             int actualStartIndex = -1;
 
             for (int i = 0; i <= line.Length; i++)
             {
-                if (wordStartEnd[colIndex].x == notSpace)
+                if (wordStartEnd[colorIndex].x == notSpace)
                 {
                     actualStartIndex = i;
                 }
-                else if (wordStartEnd[colIndex].y == notSpace)
+                else if (wordStartEnd[colorIndex].y == notSpace)
                 {
-                    wordStartEnd[colIndex] = new Vector2Int(actualStartIndex, i);
-                    colIndex++;
+                    wordStartEnd[colorIndex] = new Vector2Int(actualStartIndex, i);
+                    colorIndex++;
 
-                    if (colIndex >= colors.Count)
+                    if (colorIndex >= colors.Count)
                     {
                         break;
                     }

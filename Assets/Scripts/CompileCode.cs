@@ -25,7 +25,7 @@ public class CompileCode : MonoBehaviour
     {
         methods = new List<MethodInfo>();
 
-        codeField.text = container.visibleText;
+        codeField.text = container.visibleText;      
         errorText.text = "";
 
         codeToDisplay.supportRichText = true;
@@ -35,7 +35,6 @@ public class CompileCode : MonoBehaviour
     private void Update()
     {
         codeToDisplay.text = SyntaxHighlighter.HighlightCode(codeField.text, codeTheme);
-        
     }
 
     public void Run()
