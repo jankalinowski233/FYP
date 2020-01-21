@@ -17,13 +17,16 @@ MonoBehaviour:
     List<MonoBehaviour> m = new List<MonoBehaviour>();\n\n\tpublic static void TestFunction()\n\t{\t\n\t\tcube.gameObject.AddComponent<Move>();\n\t\tMonoBehaviour[]
     b = \tcube.gameObject.GetComponents<MonoBehaviour>();\n\n\tforeach(MonoBehaviour
     mb in b)\n\t{\n\t\tm.Add(mb);\n\t}\n\t\n\t\tif(m.Count > 1)\n\t\t{\tGameObject.Destroy(m[0]);\t\t\tm.RemoveAt(0);\n\t\t}\n\n\t}\n}"
-  visibleText: "public class Move : MonoBehaviour\n{\t\n\tGameObject spinningCube;\n\tfloat
-    speed;\n\t\n\t//function called when a game starts\n\tvoid Start() \n\t{ \n\t\tspinningCube
-    = GameObject.FindGameObjectWithTag(\"Target\");\n\t}\n\n\t//function called once
-    every frame\n\tvoid Update()\n\t{\n\t\t//TRUE if green cube's position is greater
-    than red cube's\n\t\tbool position = gameObject.transform.position.x > spinningCube.gameObject.transform.position.x;\n\t\tspeed
-    = -0.5f;\n\t\tswitch(position)\n\t\t{\n\t\t\n\t\t}\n\t\t\n\t\ttransform.Translate(speed
-    * Time.deltaTime, 0, 0);\n\t}\n}"
+  visibleText: "public class Move : MonoBehaviour\n{\t\n                GameObject
+    spinningCube;\n                float speed;\n\t\n                //function called
+    when a game starts\n                void Start() \n\t            { \n                     spinningCube
+    = GameObject.FindGameObjectWithTag(\"Target\");\n\t            }\n\n                //function
+    called once every frame\n                void Update ()\n\t            {\n                    //TRUE
+    when green cube's position is greater than red cube's\n                    bool
+    position = gameObject.transform.position.x > spinningCube.gameObject.transform.position.x;\n\t\t
+    \           speed = -0.5f;\n\n                    switch (position)\n\t\t            {\n\t\t\n\t\t
+    \           }\n\t\t\n\t\t            transform.Translate(speed * Time.deltaTime,
+    0, 0);\n\t           }\n}"
   defaultText: "public class Move : MonoBehaviour\n{\t\n\tGameObject spinningCube;\n\tfloat
     speed;\n\t\n\t//function called when a game starts\n\tvoid Start() \n\t{ \n\t\tspinningCube
     = GameObject.FindGameObjectWithTag(\"Target\");\n\t}\n\n\t//function called once

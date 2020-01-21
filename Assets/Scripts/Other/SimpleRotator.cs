@@ -10,7 +10,7 @@ public class SimpleRotator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.eulerAngles = transform.eulerAngles + rotationAxis * rotationSpeed * Time.deltaTime;
+        transform.Rotate(rotationAxis, rotationSpeed * Time.deltaTime);
     }
 
 }

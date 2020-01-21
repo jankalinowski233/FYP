@@ -38,7 +38,9 @@ public static class Keywords
         "foreach",
         "for",
         "null",
-        "using"
+        "using",
+        "switch",
+        "case"
     };
 
     public static string[] unityKeywords =
@@ -80,6 +82,7 @@ public static class Keywords
         "Collider2D",
         "Collision",
         "Collision2D",
-        "GameObject"
+        "GameObject",
+        "Time"
     };
 }
