@@ -13,3 +13,4 @@ public class SimpleMove : MonoBehaviour
         transform.position += transform.TransformDirection(moveAxis * moveSpeed * Time.deltaTime);
     }
 }
+
