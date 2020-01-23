@@ -24,7 +24,6 @@ public class CompileCode : MonoBehaviour
     int charCount;
     public string codeString;
     public Text codeToDisplay;
-    public Image textCaret;
     public float caretBlinkRate;
     float caretBlinkTimer;
 
@@ -33,9 +32,11 @@ public class CompileCode : MonoBehaviour
     {
         methods = new List<MethodInfo>();
 
-        codeString = "";
-        codeString = container.visibleText;     
+        codeString = " ";
+        //codeString = container.visibleText;     
         errorText.text = "";
+
+        charCount = codeString.Length;
 
         codeToDisplay.supportRichText = true;
         codeToDisplay.text = codeString;
@@ -44,10 +45,10 @@ public class CompileCode : MonoBehaviour
     private void Update()
     {
         if(codeToDisplay.IsActive() == true)
-        {
-            HandleCaret();
+        {            
             TextInput();
             SpecialKeysInput();
+            HandleCaret();
         }
         
         codeToDisplay.text = codeString;
@@ -140,6 +141,7 @@ public class CompileCode : MonoBehaviour
                     codeString = codeString.Insert(charCount, character.ToString());
 
                 charCount++;
+                print(charCount);
             }        
         }
     }
@@ -195,18 +197,34 @@ public class CompileCode : MonoBehaviour
         }
     }
 
+    public GameObject caret;
+    public Vector3 caretOffset;
+
     void HandleCaret()
-    {
-        caretBlinkTimer += Time.deltaTime;
-        if(caretBlinkTimer > (1.0f / caretBlinkRate))
+    {  
+        var generateCaret = codeToDisplay.cachedTextGenerator;
+        if (generateCaret.verts.Count > 0)
         {
-            textCaret.enabled = true;
+            var v = generateCaret.verts[generateCaret.verts.Count - 1].position;
+            print(v);
+            v = codeToDisplay.transform.TransformPoint(v);
+            caret.transform.position = v + caretOffset;
+        }
+
+        caretBlinkTimer += Time.deltaTime;
+        if (caretBlinkTimer > caretBlinkRate)
+        {
+            caret.SetActive(!caret.activeSelf);
             caretBlinkTimer = 0f;
         }
-        else
-        {
-            textCaret.enabled = false;
-        }
-        // TODO caret
+    }
+
+    UIVertex GetCharacterPosition(TextGenerator gen, string text)
+    {
+        UIVertex vertex = new UIVertex();        
+
+        //TODO calculations
+
+        return vertex;
     }
 }
