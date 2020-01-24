@@ -44,11 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e36743b45636e149abb3606f3565003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  codeTheme: {fileID: 0}
+  codeTheme: {fileID: 11400000, guid: b870be97aaed7e5409f89fb048f0cde5, type: 2}
   container: {fileID: 11400000, guid: 2ee0ed0d540929841b8567005d6d40fe, type: 2}
-  codeField: {fileID: 0}
-  codeToDisplay: {fileID: 0}
   errorText: {fileID: 0}
+  codeString: 
+  codeToDisplay: {fileID: 0}
+  caretBlinkRate: 0.5
+  caret: {fileID: 0}
+  caretOffset: {x: 770, y: 20, z: 0}
 --- !u!114 &3016331206494010622
 MonoBehaviour:
   m_ObjectHideFlags: 0

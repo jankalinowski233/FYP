@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using TMPro;
 
 /// <summary>
 /// Binds the code in the runtime
@@ -20,13 +20,16 @@ public class CompileCode : MonoBehaviour
 
     [Header("Custom text input")]
     [Space(5f)]
-    string inputCharacters = "zxcvbnmasdfghjklqwertyuiop,./<>?;': 1234567890\"-=_+\\ZXCVBNMASDFGHJKLQWERTYUIOP!@#$%^&*()~\t[]{}|";
+    string inputCharacters = "zxcvbnmasdfghjklqwertyuiop,./<>?;': 1234567890\"-=_+\\ZXCVBNMASDFGHJKLQWERTYUIOP!@#$%^&*()~[]{}|";
     int charCount;
+    int lineCount;
     public string codeString;
     public Text codeToDisplay;
     public float caretBlinkRate;
     float caretBlinkTimer;
-    Vector2 codeUIExtents;
+    public GameObject caret;
+    RectTransform caretRect;
+    public Vector3 caretOffset;
 
     // Start is called before the first frame update
     void Start()
@@ -34,12 +37,12 @@ public class CompileCode : MonoBehaviour
         methods = new List<MethodInfo>();
 
         codeString = "";
-        codeString = container.visibleText;     
+        //codeString = container.visibleText;     
         errorText.text = "";
 
         charCount = codeString.Length;
 
-        codeUIExtents = codeToDisplay.GetComponent<RectTransform>().rect.size;
+        caretRect = caret.GetComponent<RectTransform>();
         codeToDisplay.supportRichText = true;
         codeToDisplay.text = codeString;
     }
@@ -50,10 +53,9 @@ public class CompileCode : MonoBehaviour
         {            
             TextInput();
             SpecialKeysInput();
-            HandleCaret();
+            HandleCaret(codeString);
         }
         
-        codeToDisplay.text = codeString;
         codeToDisplay.text = SyntaxHighlighter.HighlightCode(codeString, codeTheme);
     }
 
@@ -141,7 +143,7 @@ public class CompileCode : MonoBehaviour
                     codeString += character;
                 else
                     codeString = codeString.Insert(charCount, character.ToString());
-
+               
                 charCount++;
             }        
         }
@@ -149,7 +151,7 @@ public class CompileCode : MonoBehaviour
 
     public void SpecialKeysInput()
     {
-        if(Input.GetKeyDown(KeyCode.Return))
+        if(Input.GetKeyDown(KeyCode.Return)) // add new line upon ENTER press
         {
             if (codeString == "" || charCount == codeString.Length)
                 codeString += "\n";
@@ -157,73 +159,118 @@ public class CompileCode : MonoBehaviour
                 codeString = codeString.Insert(charCount, "\n");
 
             charCount++;
+            lineCount++;
         }
 
         if(Input.GetKeyDown(KeyCode.Backspace))
         {
-            if (charCount > 0)
+            if (charCount > 0) // delete a character when backspace is pressed
             {
                 char deleted = codeString[charCount - 1];
                 string codeStart = codeString.Substring(0, charCount - 1);
                 string codeEnd = codeString.Substring(charCount, codeString.Length - charCount);
                 codeString = codeStart + codeEnd;
                 charCount--;
+
+                if (deleted == '\n') // decrement line count if \n is deleted
+                    lineCount--;
             }
         }
 
         if(Input.GetKeyDown(KeyCode.Tab))
         {
-            codeString = codeString.Insert(charCount, "    ");
+            codeString = codeString.Insert(charCount, "    "); // add 4 spaces when tab is pressed
             charCount += 4;
         }
 
-        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        if(Input.GetKeyDown(KeyCode.LeftArrow)) // Move caret left
         {
+            if(charCount != 0) // move to previous line
+            {
+                if (codeString[charCount - 1] == '\n')
+                    lineCount--;
+            }          
+
             charCount = Mathf.Max(0, charCount - 1);
         }
 
-        if(Input.GetKeyDown(KeyCode.RightArrow))
+        if(Input.GetKeyDown(KeyCode.RightArrow)) // Move caret right
         {
+            if(codeString.Length > charCount) // move to next line
+            {
+                if (codeString[charCount] == '\n')
+                    lineCount++;
+            }
+           
             charCount = Mathf.Min(codeString.Length, charCount + 1);
         }
 
-        if(Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            
+        if(Input.GetKeyDown(KeyCode.UpArrow)) // Move caret up
+        {          
+            if(lineCount > 0) // if line count is greater than 0 (not at the very first line
+            {
+                string[] lines = codeString.Split('\n'); // split the code
+                int length = 0;
+
+                for(int i = 0; i < lineCount; i++) // calculate length
+                {
+                    length += lines[i].Length + 1;
+                }         
+                
+                charCount = length-1; // set char count
+                lineCount--; // decrement line count
+            }           
         }
 
-        if(Input.GetKeyDown(KeyCode.DownArrow))
+        if(Input.GetKeyDown(KeyCode.DownArrow)) // Move caret down
         {
+            string[] lines = codeString.Split('\n'); // get all lines in the code
+            print(lines.Length);
+            if (lineCount < lines.Length - 1) // if current line count is smaller than total count - 1
+            {
+                int length = lines[0].Length; //begin at line[0] length
+                for(int i = 1; i <= lineCount + 1; i++) // iterate over each line
+                {
+                    length += lines[i].Length + 1; //increment length
+                }
 
+                charCount = length; // set char count to calculated length
+                lineCount++; //increment line count
+            }
         }
     }
 
-    public GameObject caret;
-    public Vector3 caretOffset;
+    void HandleCaret(string t)
+    {
+        string stopChar = ".";
+        codeToDisplay.text = stopChar;
 
-    void HandleCaret()
-    {  
-        var generateCaret = codeToDisplay.cachedTextGenerator;
-        if (generateCaret.verts.Count > 0 && charCount > 0)
+        float lineWidth = codeToDisplay.preferredWidth; // get width and height of a single character
+        float lineHeight = codeToDisplay.preferredHeight;
+
+        string upToCharIndex = t.Substring(0, charCount); // determine where the current char index is
+        codeToDisplay.text = upToCharIndex + stopChar;
+
+        float height = codeToDisplay.preferredHeight - lineHeight; // first calculate y position of a caret
+
+        string textUpToCaretCurrentLine = ""; // determine where the caret should be
+        for (int i = charCount - 1; i >= 0; i--)
         {
-            // TODO handle whitespaces, \n etc
-            // TODO handle various letter widths
-            // TODO handle letter heights
-
-            string substring = codeString.Substring(0, charCount); // get string from 0 to char count
-            generateCaret.Populate(substring, codeToDisplay.GetGenerationSettings(codeUIExtents));
-
-            Vector3 v = generateCaret.verts[generateCaret.verts.Count - 1].position; // Get vertex position at that character
-            v = codeToDisplay.transform.TransformPoint(v); // transform to code UI 
-
-            caret.transform.position = v + caretOffset; // display caret
+            if (codeString[i] == '\n' || i == 0)
+            {
+                textUpToCaretCurrentLine = t.Substring(i, charCount - i);
+                break;
+            }
         }
-        else
-        {
-            caret.SetActive(false);
-            return;
-        }
+        codeToDisplay.text = textUpToCaretCurrentLine + stopChar;
 
+        float width = codeToDisplay.preferredWidth - lineWidth; // calculate x position of a caret
+
+        caretRect.position = codeToDisplay.rectTransform.position; // place caret in a right place
+        caretRect.localPosition += Vector3.right * (width - caretOffset.x);
+        caretRect.localPosition += Vector3.down * ((height - (codeToDisplay.rectTransform.rect.height / 2)) + caretOffset.y);
+
+        // blink
         caretBlinkTimer += Time.deltaTime;
         if (caretBlinkTimer > caretBlinkRate)
         {
