@@ -26,18 +26,20 @@ public class CompileCode : MonoBehaviour
     public Text codeToDisplay;
     public float caretBlinkRate;
     float caretBlinkTimer;
+    Vector2 codeUIExtents;
 
     // Start is called before the first frame update
     void Start()
     {
         methods = new List<MethodInfo>();
 
-        codeString = " ";
-        //codeString = container.visibleText;     
+        codeString = "";
+        codeString = container.visibleText;     
         errorText.text = "";
 
         charCount = codeString.Length;
 
+        codeUIExtents = codeToDisplay.GetComponent<RectTransform>().rect.size;
         codeToDisplay.supportRichText = true;
         codeToDisplay.text = codeString;
     }
@@ -141,7 +143,6 @@ public class CompileCode : MonoBehaviour
                     codeString = codeString.Insert(charCount, character.ToString());
 
                 charCount++;
-                print(charCount);
             }        
         }
     }
@@ -203,12 +204,24 @@ public class CompileCode : MonoBehaviour
     void HandleCaret()
     {  
         var generateCaret = codeToDisplay.cachedTextGenerator;
-        if (generateCaret.verts.Count > 0)
+        if (generateCaret.verts.Count > 0 && charCount > 0)
         {
-            var v = generateCaret.verts[generateCaret.verts.Count - 1].position;
-            print(v);
-            v = codeToDisplay.transform.TransformPoint(v);
-            caret.transform.position = v + caretOffset;
+            // TODO handle whitespaces, \n etc
+            // TODO handle various letter widths
+            // TODO handle letter heights
+
+            string substring = codeString.Substring(0, charCount); // get string from 0 to char count
+            generateCaret.Populate(substring, codeToDisplay.GetGenerationSettings(codeUIExtents));
+
+            Vector3 v = generateCaret.verts[generateCaret.verts.Count - 1].position; // Get vertex position at that character
+            v = codeToDisplay.transform.TransformPoint(v); // transform to code UI 
+
+            caret.transform.position = v + caretOffset; // display caret
+        }
+        else
+        {
+            caret.SetActive(false);
+            return;
         }
 
         caretBlinkTimer += Time.deltaTime;
@@ -217,14 +230,5 @@ public class CompileCode : MonoBehaviour
             caret.SetActive(!caret.activeSelf);
             caretBlinkTimer = 0f;
         }
-    }
-
-    UIVertex GetCharacterPosition(TextGenerator gen, string text)
-    {
-        UIVertex vertex = new UIVertex();        
-
-        //TODO calculations
-
-        return vertex;
     }
 }

@@ -45,7 +45,7 @@ public class SyntaxHighlighter
                 c = theme.commentColor;
                 colors.Add(c);
 
-                continue;
+                break;
             }
 
             for (int j = 0; j < Keywords.blueWords.Length; j++)
