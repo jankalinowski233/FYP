@@ -843,7 +843,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 72.497, y: 17.213001, z: 319.725}
 --- !u!1001 &247687030
 PrefabInstance:
@@ -1174,18 +1174,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 80576526}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &589144637 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 60075862203854611, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1042523331}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &652102855 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1601551922182328, guid: aed6fae6614f6cf45b456c75fa94b3b5,
@@ -1588,7 +1576,7 @@ MonoBehaviour:
   OnCollect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1763466162}
         m_MethodName: IncrementProgress
         m_Mode: 4
         m_Arguments:
@@ -1717,7 +1705,7 @@ PrefabInstance:
     - target: {fileID: 1324900220959455320, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1324900220959455320, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
@@ -1792,28 +1780,29 @@ PrefabInstance:
     - target: {fileID: 1324900220743210004, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
       propertyPath: m_text
-      value: The Cube loves small, red cubes, but they are really stubborn and keep
-        appearing on the opposite sides. Can you help The Cube catch 'em all?
+      value: You'r trapped in a room with toxic gas. You're running out of oxygen.
+        There are some oxygen canisters in the room, but for some reason, they keep
+        appearing on the opposite sides of the room. Collect them, or you'll die!
       objectReference: {fileID: 0}
     - target: {fileID: 1324900220743210004, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 140
+      value: 219
       objectReference: {fileID: 0}
     - target: {fileID: 1324900220743210004, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 25
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 1324900220743210004, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 26
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1324900220743210004, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1324900220793949492, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
@@ -1830,16 +1819,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1708181425}
-    - target: {fileID: 1324900220765450847, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1324900221684934382, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1324900220616227152, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
       propertyPath: m_CustomCaretColor
@@ -1880,11 +1859,59 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1324900220765450847, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324900221684934382, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088458210590266040, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088458210590266040, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088458210590266040, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993548261123017113, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60e40b3c1d123f94eb5fe768be6dd98d, type: 3}
 --- !u!114 &1042523332 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1324900221312928707, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1042523331}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1042523333 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1172945061097922127, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1042523331}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1042523334 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9088458210590266040, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
     type: 3}
   m_PrefabInstance: {fileID: 1042523331}
   m_PrefabAsset: {fileID: 0}
@@ -2733,7 +2760,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnGoalReach:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1708181425}
+        m_MethodName: LoadLevel
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainMenu
+          m_BoolArgument: 0
+        m_CallState: 2
   currentProgress: 0
   oxygenBar: {fileID: 0}
   timer: 10
@@ -2928,7 +2966,7 @@ PrefabInstance:
         type: 3}
       propertyPath: codeToDisplay
       value: 
-      objectReference: {fileID: 589144637}
+      objectReference: {fileID: 1042523334}
     - target: {fileID: 3016331206494010617, guid: 789e92f48c5c9f54898fb0bdf11265e8,
         type: 3}
       propertyPath: codeTheme
@@ -2940,15 +2978,25 @@ PrefabInstance:
       propertyPath: caretBlinkRate
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3016331206494010617, guid: 789e92f48c5c9f54898fb0bdf11265e8,
+        type: 3}
+      propertyPath: caret
+      value: 
+      objectReference: {fileID: 1042523333}
+    - target: {fileID: 3016331206494010617, guid: 789e92f48c5c9f54898fb0bdf11265e8,
+        type: 3}
+      propertyPath: timeBtwInputs
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3016331206494010616, guid: 789e92f48c5c9f54898fb0bdf11265e8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.67614806
+      value: -0.67614746
       objectReference: {fileID: 0}
     - target: {fileID: 3016331206494010616, guid: 789e92f48c5c9f54898fb0bdf11265e8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.95477986
+      value: 0.95477295
       objectReference: {fileID: 0}
     - target: {fileID: 3016331206494010616, guid: 789e92f48c5c9f54898fb0bdf11265e8,
         type: 3}
@@ -2958,17 +3006,17 @@ PrefabInstance:
     - target: {fileID: 3016331206494010616, guid: 789e92f48c5c9f54898fb0bdf11265e8,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3016331206494010616, guid: 789e92f48c5c9f54898fb0bdf11265e8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3016331206494010616, guid: 789e92f48c5c9f54898fb0bdf11265e8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3016331206494010616, guid: 789e92f48c5c9f54898fb0bdf11265e8,
         type: 3}
@@ -2978,7 +3026,7 @@ PrefabInstance:
     - target: {fileID: 3016331206494010616, guid: 789e92f48c5c9f54898fb0bdf11265e8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3016331206494010616, guid: 789e92f48c5c9f54898fb0bdf11265e8,
         type: 3}

@@ -16,3 +16,4 @@ MonoBehaviour:
   unityKeyword: {r: 1, g: 0.56366897, b: 0, a: 1}
   unityClass: {r: 0, g: 1, b: 0.2009983, a: 1}
   commentColor: {r: 0.12872458, g: 0.5943396, b: 0, a: 1}
+  alwaysHighlightedColor: {r: 0.9879209, g: 1, b: 0, a: 1}

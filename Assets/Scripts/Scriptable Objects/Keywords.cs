@@ -30,20 +30,22 @@ public static class Keywords
         "this",
         "if",
         "else",
-        "true",
         "false",
         "continue",
         "break",
         "return",
         "foreach",
         "for",
+        "true",
         "null",
         "using",
         "switch",
         "case"
     };
 
-    public static string[] unityKeywords =
+    public static readonly string breakChars = "<>,.;[]{}()";
+
+    public static readonly string[] unityKeywords =
     {
         "Awake",
         "Start",
@@ -70,13 +72,13 @@ public static class Keywords
         "OnDrawGizmos"
     };
 
-    public static string[] unityClasses =
+    public static readonly string[] unityClasses =
     {
         "Object",
         "MonoBehaviour",
-        "Debug",
         "Transform",
         "Rigidbody",
+        "Debug",
         "Rigidbody2D",
         "Collider",
         "Collider2D",

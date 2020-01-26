@@ -23,6 +23,15 @@ public class SyntaxHighlighter
         return highlightedCode;
     }
 
+    static string Format(string line)
+    {
+        line = line.Trim();
+
+        string formatted = "";
+
+        return formatted;
+    }
+
     static string Highlight(string line, SyntaxTheme theme)
     {
         List<Color> colors = new List<Color>();
@@ -50,8 +59,8 @@ public class SyntaxHighlighter
 
             for (int j = 0; j < Keywords.blueWords.Length; j++)
             {
-                string word = Keywords.blueWords[j];
-                if (words[i] == word)
+                string word = Keywords.blueWords[j];              
+                if (words[i].Contains(word))
                 {
                     c = theme.variableColor;
                 }
@@ -60,7 +69,7 @@ public class SyntaxHighlighter
             for (int j = 0; j < Keywords.unityKeywords.Length; j++)
             {
                 string word = Keywords.unityKeywords[j];
-                if (words[i] == word)
+                if (words[i].Contains(word))
                 {
                     c = theme.unityKeyword;
                 }
@@ -69,7 +78,7 @@ public class SyntaxHighlighter
             for (int j = 0; j < Keywords.unityClasses.Length; j++)
             {
                 string word = Keywords.unityClasses[j];
-                if (words[i] == word)
+                if (words[i].Contains(word))
                 {
                     c = theme.unityClass;
                 }
@@ -92,7 +101,7 @@ public class SyntaxHighlighter
 
             for (int i = 0; i <= line.Length; i++)
             {
-                if (wordStartEnd[colorIndex].x == notSpace)
+                if (wordStartEnd[colorIndex].x == notSpace) // check for actual start and end position
                 {
                     actualStartIndex = i;
                 }
@@ -110,7 +119,7 @@ public class SyntaxHighlighter
                     continue;
                 }
 
-                if (i < line.Length)
+                if (i < line.Length) // look for spaces in a line
                 {
                     char character = line[i];
 

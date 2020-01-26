@@ -9,4 +9,5 @@ public class SyntaxTheme : ScriptableObject
     public Color unityKeyword;
     public Color unityClass;
     public Color commentColor;
+    public Color alwaysHighlightedColor;
 }

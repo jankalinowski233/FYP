@@ -4,7 +4,6 @@ using System.Reflection;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 /// <summary>
 /// Binds the code in the runtime
@@ -30,6 +29,8 @@ public class CompileCode : MonoBehaviour
     public GameObject caret;
     RectTransform caretRect;
     public Vector3 caretOffset;
+    public float timeBtwInputs;
+    float remainingTimeBtwInputs;
 
     // Start is called before the first frame update
     void Start()
@@ -37,10 +38,12 @@ public class CompileCode : MonoBehaviour
         methods = new List<MethodInfo>();
 
         codeString = "";
-        //codeString = container.visibleText;     
+        codeString = container.visibleText;     
         errorText.text = "";
 
         charCount = codeString.Length;
+        string[] lines = codeString.Split('\n');
+        lineCount = lines.Length-1;
 
         caretRect = caret.GetComponent<RectTransform>();
         codeToDisplay.supportRichText = true;
@@ -50,9 +53,17 @@ public class CompileCode : MonoBehaviour
     private void Update()
     {
         if(codeToDisplay.IsActive() == true)
-        {            
-            TextInput();
-            SpecialKeysInput();
+        {
+            if(remainingTimeBtwInputs <= 0)
+            {
+                TextInput();
+                SpecialKeysInput();               
+            }
+            else
+            {
+                remainingTimeBtwInputs -= Time.deltaTime;
+            }
+
             HandleCaret(codeString);
         }
         
@@ -162,7 +173,7 @@ public class CompileCode : MonoBehaviour
             lineCount++;
         }
 
-        if(Input.GetKeyDown(KeyCode.Backspace))
+        if(Input.GetKey(KeyCode.Backspace))
         {
             if (charCount > 0) // delete a character when backspace is pressed
             {
@@ -175,15 +186,17 @@ public class CompileCode : MonoBehaviour
                 if (deleted == '\n') // decrement line count if \n is deleted
                     lineCount--;
             }
+            remainingTimeBtwInputs = timeBtwInputs;
         }
 
         if(Input.GetKeyDown(KeyCode.Tab))
         {
             codeString = codeString.Insert(charCount, "    "); // add 4 spaces when tab is pressed
             charCount += 4;
+            remainingTimeBtwInputs = timeBtwInputs;
         }
 
-        if(Input.GetKeyDown(KeyCode.LeftArrow)) // Move caret left
+        if(Input.GetKey(KeyCode.LeftArrow)) // Move caret left
         {
             if(charCount != 0) // move to previous line
             {
@@ -192,9 +205,10 @@ public class CompileCode : MonoBehaviour
             }          
 
             charCount = Mathf.Max(0, charCount - 1);
+            remainingTimeBtwInputs = timeBtwInputs;
         }
 
-        if(Input.GetKeyDown(KeyCode.RightArrow)) // Move caret right
+        if(Input.GetKey(KeyCode.RightArrow)) // Move caret right
         {
             if(codeString.Length > charCount) // move to next line
             {
@@ -203,6 +217,7 @@ public class CompileCode : MonoBehaviour
             }
            
             charCount = Mathf.Min(codeString.Length, charCount + 1);
+            remainingTimeBtwInputs = timeBtwInputs;
         }
 
         if(Input.GetKeyDown(KeyCode.UpArrow)) // Move caret up
@@ -225,7 +240,6 @@ public class CompileCode : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.DownArrow)) // Move caret down
         {
             string[] lines = codeString.Split('\n'); // get all lines in the code
-            print(lines.Length);
             if (lineCount < lines.Length - 1) // if current line count is smaller than total count - 1
             {
                 int length = lines[0].Length; //begin at line[0] length
@@ -238,6 +252,7 @@ public class CompileCode : MonoBehaviour
                 lineCount++; //increment line count
             }
         }
+        
     }
 
     void HandleCaret(string t)
@@ -268,7 +283,7 @@ public class CompileCode : MonoBehaviour
 
         caretRect.position = codeToDisplay.rectTransform.position; // place caret in a right place
         caretRect.localPosition += Vector3.right * (width - caretOffset.x);
-        caretRect.localPosition += Vector3.down * ((height - (codeToDisplay.rectTransform.rect.height / 2)) + caretOffset.y);
+        caretRect.localPosition += Vector3.down * (height - (codeToDisplay.rectTransform.rect.height / 2) + caretOffset.y);
 
         // blink
         caretBlinkTimer += Time.deltaTime;

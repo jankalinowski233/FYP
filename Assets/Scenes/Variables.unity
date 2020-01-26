@@ -703,7 +703,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 3016331206946453770}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2126496383}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d65235d929ac254ab2b294d5bf552b7, type: 3}
@@ -1606,14 +1606,14 @@ MonoBehaviour:
   OnCollect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: IncrementProgress
+      - m_Target: {fileID: 2126496385}
+        m_MethodName: UpdateHealthUI
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0.25
+          m_FloatArgument: 4
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -1628,14 +1628,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: UpdateHealthUI
+      - m_Target: {fileID: 2126496385}
+        m_MethodName: IncrementProgress
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 4
+          m_FloatArgument: 0.25
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -1929,7 +1929,7 @@ MonoBehaviour:
   OnCollect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2126496385}
         m_MethodName: UpdateHealthUI
         m_Mode: 4
         m_Arguments:
@@ -1951,7 +1951,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2126496385}
         m_MethodName: IncrementProgress
         m_Mode: 4
         m_Arguments:
@@ -2048,7 +2048,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 3016331206946453770}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2126496383}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e36743b45636e149abb3606f3565003, type: 3}
@@ -2960,6 +2960,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1500944867 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1324900221897684693, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1871486254}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1518745453
 GameObject:
   m_ObjectHideFlags: 0
@@ -3675,14 +3681,14 @@ MonoBehaviour:
   OnCollect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: IncrementProgress
+      - m_Target: {fileID: 2126496385}
+        m_MethodName: UpdateHealthUI
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0.25
+          m_FloatArgument: 4
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -3697,14 +3703,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: UpdateHealthUI
+      - m_Target: {fileID: 2126496385}
+        m_MethodName: IncrementProgress
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 4
+          m_FloatArgument: 0.25
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -3799,6 +3805,37 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9088458210590266040, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088458210590266040, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088458210590266040, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088458210590266040, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088458210590266040, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088458210590266040, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 81b6a9b5814c48f4e8a111c9860bd1f8,
+        type: 3}
     - target: {fileID: 60075862203854611, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
       propertyPath: m_FontData.m_RichText
@@ -4084,17 +4121,17 @@ PrefabInstance:
     - target: {fileID: 8339479478160388138, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.8121199
       objectReference: {fileID: 0}
     - target: {fileID: 8339479478160388138, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8339479478160388138, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1324900220496432284, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
@@ -4121,6 +4158,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1324900220765450847, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1324900220959455322, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
       propertyPath: m_UiScaleMode
@@ -4140,6 +4182,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_MatchWidthOrHeight
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324900221684934382, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7322615488348195567, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
@@ -4231,37 +4278,26 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9088458210590266040, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+    - target: {fileID: 1324900220981388345, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 36
-      objectReference: {fileID: 0}
-    - target: {fileID: 9088458210590266040, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_FontData.m_MinSize
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9088458210590266040, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_Color.r
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9088458210590266040, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+    - target: {fileID: 1324900220981388345, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9088458210590266040, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9088458210590266040, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_FontData.m_Font
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 12800000, guid: 81b6a9b5814c48f4e8a111c9860bd1f8,
+      objectReference: {fileID: 1500944867}
+    - target: {fileID: 1324900220981388345, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1500944867}
+    - target: {fileID: 1324900220981388345, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60e40b3c1d123f94eb5fe768be6dd98d, type: 3}
 --- !u!1001 &1973167968
@@ -4614,14 +4650,14 @@ MonoBehaviour:
   OnCollect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: IncrementProgress
+      - m_Target: {fileID: 2126496385}
+        m_MethodName: UpdateHealthUI
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0.25
+          m_FloatArgument: 4
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -4636,14 +4672,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: UpdateHealthUI
+      - m_Target: {fileID: 2126496385}
+        m_MethodName: IncrementProgress
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 4
+          m_FloatArgument: 0.25
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -4857,6 +4893,40 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &2126496383 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3016331206494010618, guid: 789e92f48c5c9f54898fb0bdf11265e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 3016331206946453770}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2126496385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126496383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a46cc7e3ec45da1478fa61fe70095bb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnGoalReach:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2059095340}
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: open
+          m_BoolArgument: 0
+        m_CallState: 2
+  currentProgress: 0
+  healthbar: {fileID: 2102683261}
 --- !u!1 &2134294523
 GameObject:
   m_ObjectHideFlags: 0
