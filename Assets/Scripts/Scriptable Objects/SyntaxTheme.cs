@@ -6,8 +6,8 @@ using UnityEngine;
 public class SyntaxTheme : ScriptableObject
 {
     public Color variableColor;
-    public Color unityKeyword;
+    public Color stringColor;
     public Color unityClass;
+    public Color unityKeyword;
     public Color commentColor;
-    public Color alwaysHighlightedColor;
 }

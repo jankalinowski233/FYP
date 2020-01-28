@@ -51,7 +51,7 @@ MonoBehaviour:
   codeToDisplay: {fileID: 0}
   caretBlinkRate: 0.5
   caret: {fileID: 0}
-  caretOffset: {x: 1520, y: 15, z: 0}
+  caretOffset: {x: 1520, y: 20, z: 0}
   timeBtwInputs: 0.1
 --- !u!114 &3016331206494010622
 MonoBehaviour:

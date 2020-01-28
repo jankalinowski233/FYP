@@ -19,7 +19,6 @@ public class CompileCode : MonoBehaviour
 
     [Header("Custom text input")]
     [Space(5f)]
-    string inputCharacters = "zxcvbnmasdfghjklqwertyuiop,./<>?;': 1234567890\"-=_+\\ZXCVBNMASDFGHJKLQWERTYUIOP!@#$%^&*()~[]{}|";
     int charCount;
     int lineCount;
     public string codeString;
@@ -148,7 +147,7 @@ public class CompileCode : MonoBehaviour
         string inputString = Input.inputString;
         foreach(char character in inputString)
         {
-            if(inputCharacters.Contains(character.ToString()))
+            if(Keywords.inputCharacters.Contains(character.ToString()))
             {
                 if (codeString == "")
                     codeString += character;
@@ -171,6 +170,8 @@ public class CompileCode : MonoBehaviour
 
             charCount++;
             lineCount++;
+            caretBlinkTimer = 0.0f;
+            caret.SetActive(true);
         }
 
         if(Input.GetKey(KeyCode.Backspace))
@@ -187,13 +188,16 @@ public class CompileCode : MonoBehaviour
                     lineCount--;
             }
             remainingTimeBtwInputs = timeBtwInputs;
+            caretBlinkTimer = 0.0f;
+            caret.SetActive(true);
         }
 
         if(Input.GetKeyDown(KeyCode.Tab))
         {
             codeString = codeString.Insert(charCount, "    "); // add 4 spaces when tab is pressed
             charCount += 4;
-            remainingTimeBtwInputs = timeBtwInputs;
+            caretBlinkTimer = 0.0f;
+            caret.SetActive(true);
         }
 
         if(Input.GetKey(KeyCode.LeftArrow)) // Move caret left
@@ -206,6 +210,8 @@ public class CompileCode : MonoBehaviour
 
             charCount = Mathf.Max(0, charCount - 1);
             remainingTimeBtwInputs = timeBtwInputs;
+            caretBlinkTimer = 0.0f;
+            caret.SetActive(true);
         }
 
         if(Input.GetKey(KeyCode.RightArrow)) // Move caret right
@@ -218,6 +224,8 @@ public class CompileCode : MonoBehaviour
            
             charCount = Mathf.Min(codeString.Length, charCount + 1);
             remainingTimeBtwInputs = timeBtwInputs;
+            caretBlinkTimer = 0.0f;
+            caret.SetActive(true);
         }
 
         if(Input.GetKeyDown(KeyCode.UpArrow)) // Move caret up
@@ -234,6 +242,8 @@ public class CompileCode : MonoBehaviour
                 
                 charCount = length-1; // set char count
                 lineCount--; // decrement line count
+                caretBlinkTimer = 0.0f;
+                caret.SetActive(true);
             }           
         }
 
@@ -250,6 +260,8 @@ public class CompileCode : MonoBehaviour
 
                 charCount = length; // set char count to calculated length
                 lineCount++; //increment line count
+                caretBlinkTimer = 0.0f;
+                caret.SetActive(true);
             }
         }
         

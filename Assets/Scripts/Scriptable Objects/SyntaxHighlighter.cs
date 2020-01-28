@@ -23,28 +23,48 @@ public class SyntaxHighlighter
         return highlightedCode;
     }
 
-    static string Format(string line)
-    {
-        line = line.Trim();
-
-        string formatted = "";
-
-        return formatted;
-    }
-
     static string Highlight(string line, SyntaxTheme theme)
     {
         List<Color> colors = new List<Color>();
         List<Vector2Int> wordStartEnd = new List<Vector2Int>();
-
-        string[] words = line.Split(' ');
         int notSpace = 0;
+        string subLine = "";
+        subLine = line;
+
+        for (int i = 0; i < subLine.Length; i++)
+        {
+            char currentChar = subLine[i];
+
+            for(int j = 0; j < Keywords.breakChars.Length; j++)
+            {
+                string current = Keywords.breakChars[j];
+
+                if (currentChar.ToString() == current)
+                {
+                    if (subLine.Length > 0)
+                    {
+                        if ((i - 1 != -1) && subLine[i - 1].ToString() != " ")
+                        {
+                            subLine = subLine.Insert(i, " ");
+                        }
+
+                        if (i + 1 < subLine.Length && subLine[i + 1].ToString() != " ")
+                        {
+                            subLine = subLine.Insert(i + 1, " ");
+                        }
+                    }
+
+                }
+            }
+        }
+
+        string[] words = subLine.Split(' ');
 
         for (int i = 0; i < words.Length; i++)
         {
             Color c = Color.clear;
 
-            if(words[i].StartsWith(Keywords.commentMark) == true)
+            if (words[i].StartsWith(Keywords.commentMark) == true)
             {
                 line = line.TrimEnd(' ');
                 int beginning = line.IndexOf('/');
@@ -57,10 +77,15 @@ public class SyntaxHighlighter
                 break;
             }
 
+            if(words[i].Contains(Keywords.quotationMark))
+            {
+                c = theme.stringColor;
+            }
+
             for (int j = 0; j < Keywords.blueWords.Length; j++)
             {
-                string word = Keywords.blueWords[j];              
-                if (words[i].Contains(word))
+                string word = Keywords.blueWords[j];
+                if (words[i] == word)
                 {
                     c = theme.variableColor;
                 }
@@ -69,7 +94,7 @@ public class SyntaxHighlighter
             for (int j = 0; j < Keywords.unityKeywords.Length; j++)
             {
                 string word = Keywords.unityKeywords[j];
-                if (words[i].Contains(word))
+                if (words[i] == word)
                 {
                     c = theme.unityKeyword;
                 }
@@ -78,7 +103,7 @@ public class SyntaxHighlighter
             for (int j = 0; j < Keywords.unityClasses.Length; j++)
             {
                 string word = Keywords.unityClasses[j];
-                if (words[i].Contains(word))
+                if (words[i] == word)
                 {
                     c = theme.unityClass;
                 }
@@ -142,4 +167,3 @@ public class SyntaxHighlighter
         return line;
     }
 }
-

@@ -3,7 +3,10 @@ using System.Collections.Generic;
 
 public static class Keywords
 {
+    public static readonly string inputCharacters = "zxcvbnmasdfghjklqwertyuiop,./<>?;': 1234567890\"-=_+\\ZXCVBNMASDFGHJKLQWERTYUIOP!@#$%^&*()~[]{}|";
+
     public static readonly string commentMark = "//";
+    public static readonly string quotationMark = "\"";
 
     public static readonly string[] blueWords =
     {
@@ -43,7 +46,7 @@ public static class Keywords
         "case"
     };
 
-    public static readonly string breakChars = "<>,.;[]{}()";
+    public static readonly string[] breakChars = { "<", ">", ".", ";", "[", "]", "{", "}", "(", ")", ",", "+"};
 
     public static readonly string[] unityKeywords =
     {
