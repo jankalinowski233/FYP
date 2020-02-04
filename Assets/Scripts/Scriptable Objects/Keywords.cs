@@ -45,7 +45,8 @@ public static class Keywords
         "using",
         "switch",
         "case",
-        "char"
+        "char",
+        "override"
     };
 
     public static readonly string[] breakChars = { "<", ">", ".", ";", "[", "]", "{", "}", "(", ")", ",", "+", ":" };

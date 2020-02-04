@@ -86,7 +86,6 @@ public class SyntaxHighlighter
             {
                 string beforeSub = line.Substring(0, line.IndexOf('"'));
                 string sub = line.Substring(line.IndexOf('"'));
-                Debug.Log(sub);
                 List<int> positions = new List<int>();
 
                 for(int j = 0; j < sub.Length; j++)
