@@ -7,6 +7,7 @@ public static class Keywords
 
     public static readonly string commentMark = "//";
     public static readonly string quotationMark = "\"";
+    public static readonly string charMark = "\'";
 
     public static readonly string[] blueWords =
     {
@@ -43,10 +44,11 @@ public static class Keywords
         "null",
         "using",
         "switch",
-        "case"
+        "case",
+        "char"
     };
 
-    public static readonly string[] breakChars = { "<", ">", ".", ";", "[", "]", "{", "}", "(", ")", ",", "+"};
+    public static readonly string[] breakChars = { "<", ">", ".", ";", "[", "]", "{", "}", "(", ")", ",", "+", ":" };
 
     public static readonly string[] unityKeywords =
     {
