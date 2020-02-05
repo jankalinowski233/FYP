@@ -15,6 +15,7 @@ public class LevelController : MonoBehaviour
     protected bool invoked = false;
 
     public Image bar;
+    public Text timeText;
     
     private void Start()
     {
@@ -44,5 +45,10 @@ public class LevelController : MonoBehaviour
     public void UpdateBarUI(float amount)
     {
         bar.fillAmount += 1.0f / amount;
+    }
+
+    public void SetTimeText()
+    {
+        timeText.text = Time.timeSinceLevelLoad.ToString("0") + "s";
     }
 }
