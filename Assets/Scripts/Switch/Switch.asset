@@ -17,7 +17,17 @@ MonoBehaviour:
     List<MonoBehaviour> m = new List<MonoBehaviour>();\n\n\tpublic static void TestFunction()\n\t{\t\n\t\tMove
     move =\tplayer.gameObject.AddComponent<Move>();\n\t\tMonoBehaviour[] b = \tplayer.gameObject.GetComponents<MonoBehaviour>();\n\n\tforeach(MonoBehaviour
     mb in b)\n\t{\n\t\tm.Add(mb);\n\t}\n\t\n\t\tif(m.Count > 2)\n\t\t{\tGameObject.Destroy(m[1]);\t\t\tm.RemoveAt(1);\n\t\t}\n\nplayer.gameObject.GetComponent<SwitchPlayerMove>().Attach();\n\n\t}\n}"
-  visibleText: "public class Move : MonoBehaviour\n{\t\n                public override
-    void MoveTo(float speed)\n\t{\n\t}\n}"
-  defaultText: "public class Move : MonoBehaviour\n{\t\n                public override
-    void MoveTo(float speed)\n\t{\n\t}\n}"
+  visibleText: "public class Move : MovePlayer\n{\t\n                public override
+    float MoveTo(GameObject t)\n                {\n                         float
+    speed = -1.0f;\n                         // True if player's position is greater
+    than oxygen canister's position\n                         bool position = gameObject.transform.position.x
+    > t.transform.position.x;\n\t\n                          switch(position)\n                          {\n
+    \                         }\n\t\t\t\n                          return speed;\t\t\n
+    \                }\n}"
+  defaultText: "public class Move : MovePlayer\n{\t\n                public override
+    float MoveTo(GameObject t)\n                {\n                         float
+    speed = 0.0f;\n                         // True if player's position is greater
+    than oxygen canister's position\n                         bool position = gameObject.transform.position.x
+    > t.transform.position.x;\n\t\n                          switch(position)\n                          {\n
+    \                         }\n\t\t\t\n                          return speed;\t\t\n
+    \                }\n}"

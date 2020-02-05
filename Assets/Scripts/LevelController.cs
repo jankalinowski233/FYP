@@ -7,13 +7,14 @@ public class LevelController : MonoBehaviour
     public static LevelController instance;
 
     public UnityEvent OnGoalReach;
+    public UnityEvent OnLoseCondition;
 
     public float currentProgress = 0;
-    float goalProgress = 1.0f;
+    protected float goalProgress = 1.0f;
 
-    bool invoked = false;
+    protected bool invoked = false;
 
-    public Image healthbar;
+    public Image bar;
     
     private void Start()
     {
@@ -24,7 +25,7 @@ public class LevelController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         float progress = currentProgress / goalProgress;
 
@@ -32,7 +33,7 @@ public class LevelController : MonoBehaviour
         {
             OnGoalReach.Invoke();
             invoked = true;
-        }      
+        }
     }
 
     public void IncrementProgress(float value)
@@ -40,8 +41,8 @@ public class LevelController : MonoBehaviour
         currentProgress += value;
     }
 
-    public void UpdateHealthUI(float amount)
+    public void UpdateBarUI(float amount)
     {
-        healthbar.fillAmount += 1.0f / amount;
+        bar.fillAmount += 1.0f / amount;
     }
 }

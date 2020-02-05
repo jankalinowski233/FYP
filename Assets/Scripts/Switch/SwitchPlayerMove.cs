@@ -7,23 +7,19 @@ public abstract class MovePlayer : MonoBehaviour
     public abstract float MoveTo(GameObject t);
 }
 
-public class SwitchPlayerMove : MonoBehaviour
+public class SwitchPlayerMove : PlayerMove
 {
-    public float moveSpeed;
-    public Vector3 axis;
-
-    Animator anim;
-    Rigidbody rb;
-
     GameObject target;
     MovePlayer move;
 
-    private void Start()
-    {
-        anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
+    public GameObject goalReachedTarget;
+    bool goalReached;
 
+    protected override void Start()
+    {
+        base.Start();
         target = GameObject.FindGameObjectWithTag("Target");
+        goalReached = false;
     }
 
     public void Attach()
@@ -31,25 +27,28 @@ public class SwitchPlayerMove : MonoBehaviour
         move = GetComponent<MovePlayer>();
     }
 
-    void Update()
+    protected override void Update()
     {
         if(move != null)
         {
-            moveSpeed = move.MoveTo(target);
+            if(goalReached == false)
+            {
+                moveSpeed = move.MoveTo(target);
+            }
+            else
+            {
+                moveSpeed = 0.0f;
+                transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 2.0f * Time.deltaTime);
+            }
+            base.Update();
 
-            Vector3 temp = transform.position;
-
-            if (axis.x > 0)
-                temp.x += axis.x * moveSpeed * Time.deltaTime;
-            else if (axis.y > 0)
-                temp.y += axis.y * moveSpeed * Time.deltaTime;
-            else if (axis.z > 0)
-                temp.z += axis.z * moveSpeed * Time.deltaTime;
-
-            transform.position = temp;
             transform.LookAt(target.transform.position);
-            anim.SetFloat("speed", moveSpeed);
-        }
-            
+        }           
+    }
+
+    public void GoalReached()
+    {
+        goalReached = true;
+        target = goalReachedTarget;
     }
 }

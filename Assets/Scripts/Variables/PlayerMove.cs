@@ -7,17 +7,17 @@ public class PlayerMove : MonoBehaviour
     public Vector3 axis;
     public float moveSpeed;
 
-    Animator anim;
-    Rigidbody rb;
+    protected Animator anim;
+    protected Rigidbody rb;
 
 
-    private void Start()
+    protected virtual void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         Vector3 temp = transform.position;
 
