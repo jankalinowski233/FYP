@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2013,16 +2013,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 1324900221684934382, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1324900220222921744, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9088458210590266040, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
       propertyPath: m_Color.r
@@ -2037,6 +2027,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324900221684934382, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324900220222921744, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1324900220959455320, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
@@ -2240,90 +2240,42 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6927555449827810570, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+    - target: {fileID: 387690000, guid: 60e40b3c1d123f94eb5fe768be6dd98d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6927555449827810570, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+    - target: {fileID: 1324900220298530422, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6927555449827810570, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+    - target: {fileID: 568819571, guid: 60e40b3c1d123f94eb5fe768be6dd98d, type: 3}
+      propertyPath: m_Text
+      value: "int number = 2;\nswitch(number)\n{\n\tcase 1:\n\t*condition not met,
+        ignore this*\n\t\tbreak;\n\tcase 2:\n\t*condition met, trigger action*\n\t\tbreak;\n\tdefault:\n\t*default
+        case - triggered when no condition is met*\n\t\tbreak;\n}"
+      objectReference: {fileID: 0}
+    - target: {fileID: 568819571, guid: 60e40b3c1d123f94eb5fe768be6dd98d, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 568819571, guid: 60e40b3c1d123f94eb5fe768be6dd98d, type: 3}
+      propertyPath: m_FontData.m_MinSize
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 6927555449827810570, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+    - target: {fileID: 1324900220654420706, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1708181425}
-    - target: {fileID: 6927555449827810570, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadLevel
+      propertyPath: m_Text
+      value: Switch statements are a neat way to provide conditions to your program.
+        They compare variables against constants (predefined rules) and take corresponding
+        actions.
       objectReference: {fileID: 0}
-    - target: {fileID: 6927555449827810570, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+    - target: {fileID: 7854905537574961376, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6927555449827810570, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: MainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 6881904435525669835, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6881904435525669835, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6881904435525669835, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6881904435525669835, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6881904435525669835, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551758499471275209, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551758499471275209, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551758499471275209, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551758499471275209, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551758499471275209, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
+      propertyPath: m_Text
+      value: You're trapped in a room filling with toxic gas and you're low on oxygen.
+        You spot the extra containers, but they keep appearing on the opposite sides
+        of the room...
       objectReference: {fileID: 0}
     - target: {fileID: 5389722461988038974, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
@@ -2390,42 +2342,90 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: MainMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 387690000, guid: 60e40b3c1d123f94eb5fe768be6dd98d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1324900220298530422, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+    - target: {fileID: 6927555449827810570, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 568819571, guid: 60e40b3c1d123f94eb5fe768be6dd98d, type: 3}
-      propertyPath: m_Text
-      value: "int number = 2;\nswitch(number)\n{\n\tcase 1:\n\t*condition not met,
-        ignore this*\n\t\tbreak;\n\tcase 2:\n\t*condition met, trigger action*\n\t\tbreak;\n\tdefault:\n\t*default
-        case - triggered when no condition is met*\n\t\tbreak;\n}"
+    - target: {fileID: 6927555449827810570, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 568819571, guid: 60e40b3c1d123f94eb5fe768be6dd98d, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 568819571, guid: 60e40b3c1d123f94eb5fe768be6dd98d, type: 3}
-      propertyPath: m_FontData.m_MinSize
+    - target: {fileID: 6927555449827810570, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1324900220654420706, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+    - target: {fileID: 6927555449827810570, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
-      propertyPath: m_Text
-      value: Switch statements are a neat way to provide conditions to your program.
-        They compare variables against constants (predefined rules) and take corresponding
-        actions.
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1708181425}
+    - target: {fileID: 6927555449827810570, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadLevel
       objectReference: {fileID: 0}
-    - target: {fileID: 7854905537574961376, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+    - target: {fileID: 6927555449827810570, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
         type: 3}
-      propertyPath: m_Text
-      value: You're trapped in a room filling with toxic gas and you're low on oxygen.
-        You spot the extra containers, but they keep appearing on the opposite sides
-        of the room...
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927555449827810570, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881904435525669835, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881904435525669835, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881904435525669835, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881904435525669835, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881904435525669835, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2551758499471275209, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2551758499471275209, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2551758499471275209, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2551758499471275209, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2551758499471275209, guid: 60e40b3c1d123f94eb5fe768be6dd98d,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60e40b3c1d123f94eb5fe768be6dd98d, type: 3}
@@ -3208,6 +3208,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.44424
       objectReference: {fileID: 0}
+    - target: {fileID: 23166444799555462, guid: aed6fae6614f6cf45b456c75fa94b3b5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 843219c1de3a00c43ae1a19123f5890e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aed6fae6614f6cf45b456c75fa94b3b5, type: 3}
 --- !u!198 &1700355594 stripped
