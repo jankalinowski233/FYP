@@ -145,6 +145,15 @@ public class SyntaxHighlighter
                 }
             }
 
+            for(int j = 0; j < Keywords.customClasses.Length; j++)
+            {
+                string word = Keywords.customClasses[j];
+                if(words[i] == word)
+                {
+                    c = theme.unityClass;
+                }
+            }
+
             if (c != Color.clear)
             {
                 colors.Add(c);

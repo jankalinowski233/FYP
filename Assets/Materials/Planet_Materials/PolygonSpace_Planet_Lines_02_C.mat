@@ -103,14 +103,14 @@ Material:
     m_Floats:
     - _ASEOutlineWidth: 0.01
     - _BumpScale: 1
-    - _Cloud_Contrast: 1.2
-    - _Cloud_Falloff: 4.24
-    - _Cloud_Tiling: -3.3
-    - _Contrast: -8.14
+    - _Cloud_Contrast: 0
+    - _Cloud_Falloff: -1.05
+    - _Cloud_Tiling: 12.24
+    - _Contrast: 21.08
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FallOff: 1
+    - _FallOff: 39.62
     - _Falloff: 1.97
     - _Float0: 2.6
     - _Float1: -0.26
@@ -128,13 +128,13 @@ Material:
     - _PlanetSurfaceContrast: -3.6
     - _PlanetSurfaceFloat: 2
     - _PlanetSurfaceTiling: 2
-    - _RimPower: 1.48
+    - _RimPower: 2.39
     - _Scale: -0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Strength: 2.72
-    - _Tiling: 0.97
+    - _Tiling: 0.01
     - _UVSec: 0
     - _ZWrite: 1
     - __dirty: 0
@@ -146,6 +146,6 @@ Material:
     - _Color0: {r: 0, g: 0.7931032, b: 1, a: 0}
     - _Color1: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _RimColor: {r: 0.3693436, g: 0.27059907, b: 0.4044118, a: 0}
+    - _RimColor: {r: 0.4845311, g: 0.38915092, b: 0.5188679, a: 1}
     - _Second_Color: {r: 0.5441177, g: 0.18254983, b: 0.07601645, a: 0}
     - _Size: {r: 0, g: 0, b: 0, a: 0}

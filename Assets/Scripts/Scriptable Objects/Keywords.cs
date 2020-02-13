@@ -93,4 +93,10 @@ public static class Keywords
         "GameObject",
         "Time"
     };
+
+    public static readonly string[] customClasses =
+    {
+        "MovePlayer",
+
+    };
 }

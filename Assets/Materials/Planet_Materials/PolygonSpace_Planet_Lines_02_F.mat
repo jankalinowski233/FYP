@@ -136,9 +136,9 @@ Material:
     - _CloudCoverage: 0
     - _CloudPower: 0
     - _CloudSpeed: 0
-    - _Cloud_Contrast: 3.01
-    - _Cloud_Falloff: 5.15
-    - _Cloud_Tiling: -2.75
+    - _Cloud_Contrast: 3.82
+    - _Cloud_Falloff: 5.38
+    - _Cloud_Tiling: -6.43
     - _Contrast: 5.61
     - _Cull: 2
     - _Cutoff: 0.5
@@ -147,7 +147,7 @@ Material:
     - _DirtAmount: 0
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _FallOff: 0
+    - _FallOff: -1.11
     - _Falloff: 1.97
     - _Float0: 2.6
     - _Float1: -0.26
