@@ -13,17 +13,19 @@ MonoBehaviour:
   m_Name: Switch
   m_EditorClassIdentifier: 
   hiddenText: "using UnityEngine;\nusing System.Collections.Generic;\n\npublic class
-    TestClass\n{\n\tstatic GameObject player = GameObject.FindGameObjectWithTag(\"Player\");\n\nstatic
-    List<MonoBehaviour> m = new List<MonoBehaviour>();\n\n\tpublic static void TestFunction()\n\t{\t\n\t\tMove
+    TestClass\n{\nstatic List<MonoBehaviour> m = new List<MonoBehaviour>();\n\n\tpublic
+    static void TestFunction()\n\t{\t\nGameObject player = GameObject.FindGameObjectWithTag(\"Player\");\n\t\tMove
     move =\tplayer.gameObject.AddComponent<Move>();\n\t\tMonoBehaviour[] b = \tplayer.gameObject.GetComponents<MonoBehaviour>();\n\n\tforeach(MonoBehaviour
-    mb in b)\n\t{\n\t\tm.Add(mb);\n\t}\n\t\n\t\tif(m.Count > 2)\n\t\t{\tGameObject.Destroy(m[1]);\t\t\tm.RemoveAt(1);\n\t\t}\n\nplayer.gameObject.GetComponent<SwitchPlayerMove>().Attach();\n\n\t}\n}"
+    mb in b)\n\t{\n\t\tm.Add(mb);\n\t}\n\t\n\t\tif(m.Count > 2)\n\t\t{\tGameObject.Destroy(m[1]);\t\t\tm.RemoveAt(1);\n\t\t}\n\nplayer.gameObject.GetComponent<SwitchPlayerMove>().scriptMove
+    = move;\n\n\t}\n}"
   visibleText: "public class Move : MovePlayer\n{\t\n                public override
     float MoveTo(GameObject t)\n                {\n                         float
-    speed = -1.0f;\n                         // True if player's position is greater
+    speed = 0.0f;\n                         // True if player's position is greater
     than oxygen canister's position\n                         bool position = gameObject.transform.position.x
     > t.transform.position.x;\n\t\n                          switch(position)\n                          {\n
-    \                         }\n\t\t\t\n                          return speed;\n
-    \                }\n}"
+    \                           case true: speed = -2.0f; break;\n                            case
+    false: speed = 5.0f; break;\n                          }\n\n                          return
+    speed;\n                 }\n}"
   defaultText: "public class Move : MovePlayer\n{\t\n                public override
     float MoveTo(GameObject t)\n                {\n                         float
     speed = 0.0f;\n                         // True if player's position is greater

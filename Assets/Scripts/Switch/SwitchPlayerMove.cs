@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class MovePlayer : MonoBehaviour
-{
+{ 
     public abstract float MoveTo(GameObject t);
 }
 
 public class SwitchPlayerMove : PlayerMove
 {
-    GameObject target;
-    MovePlayer move;
-
+    public MovePlayer scriptMove;
     public GameObject goalReachedTarget;
+
+    GameObject target;
     bool goalReached;
 
     protected override void Start()
@@ -22,18 +22,13 @@ public class SwitchPlayerMove : PlayerMove
         goalReached = false;
     }
 
-    public void Attach()
-    {
-        move = GetComponent<MovePlayer>();
-    }
-
     protected override void Update()
     {
-        if(move != null)
+        if (scriptMove != null)
         {
-            if(goalReached == false)
+            if (goalReached == false)
             {
-                moveSpeed = move.MoveTo(target);
+                moveSpeed = scriptMove.MoveTo(target);
             }
             else
             {
@@ -43,7 +38,7 @@ public class SwitchPlayerMove : PlayerMove
             base.Update();
 
             transform.LookAt(target.transform.position);
-        }           
+        }      
     }
 
     public void GoalReached()

@@ -16,6 +16,11 @@ public class PlayerMove : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
     }
+    
+    public virtual void Attach()
+    {
+
+    }
 
     protected virtual void Update()
     {
