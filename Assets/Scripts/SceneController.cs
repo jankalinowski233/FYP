@@ -14,6 +14,11 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene(sceneIndex);
     }
 
+    public void UnlockLevel()
+    {
+        PlayerPrefs.SetInt("levelUnlocked", SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
     public void Quit()
     {
         Application.Quit();
