@@ -8,6 +8,9 @@ public class LevelUnlockManager : MonoBehaviour
 {
     public Button[] levelButtons;
 
+    [Space(7f)]
+    public Text solutionPanelText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +27,10 @@ public class LevelUnlockManager : MonoBehaviour
             }
                 
         }
+    }
+
+    public void SetSolutionText(TextContainer c)
+    {
+        solutionPanelText.text = c.visibleText;
     }
 }

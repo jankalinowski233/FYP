@@ -6,6 +6,7 @@ public class LevelController : MonoBehaviour
 {
     public static LevelController instance;
 
+    public UnityEvent OnLevelBegin;
     public UnityEvent OnGoalReach;
     public UnityEvent OnLoseCondition;
 
@@ -16,7 +17,12 @@ public class LevelController : MonoBehaviour
 
     public Image bar;
     public Text timeText;
-    
+
+    private void Awake()
+    {
+        OnLevelBegin.Invoke();
+    }
+
     private void Start()
     {
         if (instance == null)

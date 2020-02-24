@@ -10,6 +10,8 @@ using UnityEngine.UI;
 /// </summary>
 public class CompileCode : MonoBehaviour
 {
+    public static CompileCode instance;
+
     public SyntaxTheme codeTheme;
     public TextContainer container;
 
@@ -30,6 +32,12 @@ public class CompileCode : MonoBehaviour
     public Vector3 caretOffset;
     public float timeBtwInputs;
     float remainingTimeBtwInputs;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -73,8 +81,6 @@ public class CompileCode : MonoBehaviour
     {
         Assembly assembly = Compile(container.hiddenText + codeString); //compile code from text
         MethodInfo function = assembly.GetType("TestClass").GetMethod("TestFunction"); //process a class and a function
-
-        container.visibleText = codeString;
 
         //add methods to the list
         methods.Add(function);
