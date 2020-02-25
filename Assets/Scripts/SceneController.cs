@@ -25,6 +25,7 @@ public class SceneController : MonoBehaviour
     public void UnlockLevel()
     {
         PlayerPrefs.SetInt("levelUnlocked", SceneManager.GetActiveScene().buildIndex + 1);
+        PlayerPrefs.SetInt("time" + SceneManager.GetActiveScene().buildIndex.ToString(), (int)Time.timeSinceLevelLoad);
     }
 
     public void SaveCode()
