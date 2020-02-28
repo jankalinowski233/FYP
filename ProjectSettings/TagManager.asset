@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Target
   - GetStartedPanel
+  - Destructable
   layers:
   - Default
   - TransparentFX

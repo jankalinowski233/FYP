@@ -106,6 +106,6 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DetailColor: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _EmissiveColor: {r: 0, g: 0.8758621, b: 1, a: 0}
-    - _RimColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissiveColor: {r: 0.74308586, g: 0, b: 1, a: 1}
+    - _RimColor: {r: 0, g: 0, b: 0, a: 0}
     - _Spec: {r: 1, g: 1, b: 1, a: 0}
