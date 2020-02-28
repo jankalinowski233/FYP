@@ -11,4 +11,7 @@ public class TextContainer : ScriptableObject
 
     [TextArea(1, 50)]
     public string defaultText;
+
+    [TextArea(1, 50)]
+    public string loadText;
 }

@@ -33,7 +33,7 @@ public class LevelUnlockManager : MonoBehaviour
 
     public void SetSolutionText(TextContainer c)
     {
-        solutionPanelText.text = c.visibleText;
+        solutionPanelText.text = c.loadText;
     }
 
     public void SetSolutionTimeText(int i)

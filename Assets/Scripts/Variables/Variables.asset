@@ -18,6 +18,8 @@ MonoBehaviour:
     move = player.gameObject.AddComponent<Move>();\n\t\tMonoBehaviour[] b = player.gameObject.GetComponents<MonoBehaviour>();\n\n\tforeach(MonoBehaviour
     mb in b)\n\t{\n\t\tm.Add(mb);\n\t}\n\t\n\t\tif(m.Count > 2)\n\t\t{\tGameObject.Destroy(m[1]);\t\t\tm.RemoveAt(1);\n\t\t}\n\nplayer.gameObject.GetComponent<PlayerMove>().moveSpeed
     = move.speed;\n\n\t}\n}"
-  visibleText: "public class Move : MonoBehaviour\n{\n    public float speed = 5.0f;\n}"
+  visibleText: "public class Move : MonoBehaviour\n{\t\n     public float speed =
+    0.0f;\n}"
   defaultText: "public class Move : MonoBehaviour\n{\t\n     public float speed =
     0.0f;\n}"
+  loadText: 

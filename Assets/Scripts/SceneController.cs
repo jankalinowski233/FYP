@@ -36,22 +36,37 @@ public class SceneController : MonoBehaviour
         string saveStr = c.codeString;
 
         c.container.visibleText = saveStr;
+        c.container.loadText = saveStr;
         StreamWriter writer = new StreamWriter(directory);
         writer.Write(saveStr);
 
         writer.Close();
     }
 
-    public void LoadCode()
+    public string LoadCode(int i)
     {      
-        string directory = Application.persistentDataPath + "/Level" + SceneManager.GetActiveScene().buildIndex.ToString() + ".txt";
-        if(File.Exists(directory))
+        string directory = Application.persistentDataPath + "/Level" + i.ToString() + ".txt";
+        string actualCode = "";
+        if (File.Exists(directory))
         {
             StreamReader reader = new StreamReader(directory);
-            string actualCode = reader.ReadToEnd();
+            actualCode = reader.ReadToEnd();
             reader.Close();
+        }
 
-           c.container.visibleText = actualCode;
+        return actualCode;
+    }
+
+    public void SetCode()
+    {
+        int i = SceneManager.GetActiveScene().buildIndex;
+        if(LoadCode(i) != "")
+        {
+            c.container.visibleText = LoadCode(i);
+        }
+        else
+        {
+            c.container.visibleText = c.container.defaultText;
         }
     }
 

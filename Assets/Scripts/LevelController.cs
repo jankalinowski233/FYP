@@ -18,17 +18,14 @@ public class LevelController : MonoBehaviour
     public Image bar;
     public Text timeText;
 
-    private void Awake()
-    {
-        OnLevelBegin.Invoke();
-    }
-
     private void Start()
     {
         if (instance == null)
             instance = this;
         else
             Destroy(gameObject);
+
+        OnLevelBegin.Invoke();
     }
 
     // Update is called once per frame
