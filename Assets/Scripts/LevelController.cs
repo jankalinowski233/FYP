@@ -54,4 +54,9 @@ public class LevelController : MonoBehaviour
     {
         timeText.text = Time.timeSinceLevelLoad.ToString("0") + "s";
     }
+
+    public void SetTimescale(float scale)
+    {
+        Time.timeScale = scale;
+    }
 }
