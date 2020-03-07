@@ -18,10 +18,13 @@ public class ShipAttack : MonoBehaviour
 
     IEnumerator KillEnemy()
     {       
-        EnemyShip sh = target.GetComponent<EnemyShip>();
-        yield return new WaitForSeconds(0.1f);
-        sh.Die();
-        target = null;
+        if(target != null)
+        {
+            EnemyShip sh = target.GetComponent<EnemyShip>();
+            yield return new WaitForSeconds(0.1f);
+            sh.Die();
+            target = null;
+        }
     }
 
     public virtual void Aim(bool target)
@@ -42,7 +45,8 @@ public class PlayerShip : Ship
 
     private void Update()
     {
-        att.Aim(shouldShoot);
+        if(att != null)
+            att.Aim(shouldShoot);
     }
 
     public override void Die()
