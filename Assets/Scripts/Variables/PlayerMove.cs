@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerMove : MonoBehaviour
     protected Animator anim;
     protected Rigidbody rb;
 
+    public Text idleText;
+    public Text moveText;
 
     protected virtual void Start()
     {
@@ -36,5 +39,16 @@ public class PlayerMove : MonoBehaviour
         transform.position = temp;
 
         anim.SetFloat("speed", moveSpeed);
+
+        if(moveSpeed > 0)
+        {
+            idleText.color = new Color(idleText.color.r, idleText.color.g, idleText.color.b, 0.2f);
+            moveText.color = new Color(moveText.color.r, moveText.color.g, moveText.color.b, 1.0f);
+        }
+        else
+        {
+            idleText.color = new Color(idleText.color.r, idleText.color.g, idleText.color.b, 1.0f);
+            moveText.color = new Color(moveText.color.r, moveText.color.g, moveText.color.b, 0.2f);
+        }
     }
 }

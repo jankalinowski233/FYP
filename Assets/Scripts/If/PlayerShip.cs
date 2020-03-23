@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShipAttack : MonoBehaviour
 {
@@ -38,6 +39,9 @@ public class PlayerShip : Ship
     public bool shouldShoot;
     public ShipAttack att;
 
+    public Text shootText;
+    public Text aimText;
+
     private void Start()
     {
         shouldShoot = false;
@@ -57,5 +61,16 @@ public class PlayerShip : Ship
     public void SetShoot(bool shoot)
     {
         shouldShoot = shoot;
+
+        if(shouldShoot == true)
+        {
+            shootText.color = new Color(shootText.color.r, shootText.color.g, shootText.color.b, 1.0f);
+            aimText.color = new Color(aimText.color.r, aimText.color.g, aimText.color.b, 0.2f);
+        }
+        else
+        {
+            shootText.color = new Color(shootText.color.r, shootText.color.g, shootText.color.b, 0.2f);
+            aimText.color = new Color(aimText.color.r, aimText.color.g, aimText.color.b, 1.0f);
+        }
     }
 }
