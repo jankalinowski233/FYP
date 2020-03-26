@@ -46,6 +46,7 @@ public class SceneController : MonoBehaviour
     public string LoadCode(int i)
     {      
         string directory = Application.persistentDataPath + "/Level" + i.ToString() + ".txt";
+
         string actualCode = "";
         if (File.Exists(directory))
         {

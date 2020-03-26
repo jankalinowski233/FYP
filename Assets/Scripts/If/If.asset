@@ -19,7 +19,8 @@ MonoBehaviour:
     mb in b)\n\t{\n\t\tm.Add(mb);\n\t}\n\t\n\t\tif(m.Count > 2)\n\t\t{\tGameObject.Destroy(m[1]);\t\t\tm.RemoveAt(1);\n\t\t}\n\nplayer.gameObject.GetComponent<PlayerShip>().att
     = attack;\n\n\t}\n}"
   visibleText: "public class Attack : ShipAttack\r\n{\r\n    public override void
-    Aim(bool target)\r\n    {\r\n     \n    }\r\n}"
+    Aim(bool target)\r\n    {\r\n         if(target) Shoot();\n    }\r\n}"
   defaultText: "public class Attack : ShipAttack\r\n{\r\n    public override void
     Aim(bool target)\r\n    {\r\n\n    }\r\n}"
-  loadText: 
+  loadText: "public class Attack : ShipAttack\r\n{\r\n    public override void Aim(bool
+    target)\r\n    {\r\n         if(target) Shoot();\n    }\r\n}"
