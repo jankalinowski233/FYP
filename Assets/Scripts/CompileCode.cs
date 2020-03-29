@@ -282,7 +282,7 @@ public class CompileCode : MonoBehaviour
         float lineHeight = codeToDisplay.preferredHeight;
 
         string upToCharIndex = t.Substring(0, charCount); // determine where the current char index is
-        codeToDisplay.text = upToCharIndex + stopChar;
+        codeToDisplay.text = upToCharIndex;
 
         float height = codeToDisplay.preferredHeight - lineHeight; // first calculate y position of a caret
 

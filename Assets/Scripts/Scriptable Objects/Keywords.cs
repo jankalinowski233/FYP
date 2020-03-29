@@ -91,12 +91,15 @@ public static class Keywords
         "Collision",
         "Collision2D",
         "GameObject",
-        "Time"
+        "Time",
+        "Vector2",
+        "Vector3"
     };
 
     public static readonly string[] customClasses =
     {
         "MovePlayer",
-
+        "TAim",
+        "Drone"
     };
 }

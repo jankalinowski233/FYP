@@ -12,7 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab11114e60c16c64c8c3bd9311a90eba, type: 3}
   m_Name: For
   m_EditorClassIdentifier: 
-  hiddenText: 
-  visibleText: 
-  defaultText: 
-  loadText: 
+  hiddenText: "using UnityEngine;\nusing System.Collections.Generic;\n\npublic class
+    TestClass\n{\nstatic List<MonoBehaviour> m = new List<MonoBehaviour>();\n\n\tpublic
+    static void TestFunction()\n\t{\t\nGameObject player = GameObject.FindGameObjectWithTag(\"Player\");\n\t\tTurretAim
+    tAim =\tplayer.gameObject.AddComponent<TurretAim>();\n\t\tMonoBehaviour[] b =
+    \tplayer.gameObject.GetComponents<MonoBehaviour>();\n\n\tforeach(MonoBehaviour
+    mb in b)\n\t{\n\t\tm.Add(mb);\n\t}\n\t\n\t\tif(m.Count > 2)\n\t\t{\tGameObject.Destroy(m[1]);\t\t\tm.RemoveAt(1);\n\t\t}\n\nplayer.gameObject.GetComponent<Turret>().aim
+    = tAim;\n\n\t}\n}"
+  visibleText: "public class TurretAim : TAim\n{  \r\n    public override Drone FindTarget()\r\n
+    \   {\r\n        for (int i = drones.Count - 1; i >= 0; i--)\r\n        {\r\n
+    \           float distance = Vector3.Distance(transform.position, drones[i].transform.position);\r\n\r\n
+    \           if (distance < oldDistance)\r\n            {\r\n                oldDistance
+    = distance;\r\n\r\n                Drone d = drones[i].GetComponent<Drone>();\r\n
+    \               return d;\r\n            }\r\n        }\r\n\r\n        return
+    null;\r\n    }\r\n}"
+  defaultText: "public class TurretAim : TAim\r\n{  \r\n    public override Drone
+    FindTarget()\r\n    {\r\n        for (int i = drones.Count - 1; i >= 0; i--)\r\n
+    \       {\r\n            // Calculate distance between turret and a drone\n\n
+    \           // Check if distance is smaller than previous distance\n                        //
+    If so, return object at i\n        }\r\n\r\n        return null;\r\n    }\r\n}"
+  loadText: "public class TurretAim : Aim\n{  \r\n    public override Drone FindTarget()\r\n
+    \   {\r\n        for (int i = drones.Count - 1; i >= 0; i--)\r\n        {\r\n
+    \           float distance = Vector3.Distance(transform.position, drones[i].transform.position);\r\n\r\n
+    \           if (distance < oldDistance)\r\n            {\r\n                oldDistance
+    = distance;\r\n\r\n                Drone d = drones[i].GetComponent<Drone>();\r\n
+    \               return d;\r\n            }\r\n        }\r\n\r\n        return
+    null;\r\n    }\r\n}"

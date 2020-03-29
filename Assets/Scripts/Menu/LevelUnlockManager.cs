@@ -16,6 +16,7 @@ public class LevelUnlockManager : MonoBehaviour
     void Start()
     {
         int currentLevel = PlayerPrefs.GetInt("levelUnlocked", 1);
+        Debug.Log(currentLevel);
 
         for(int i = 0; i < levelButtons.Length; i++)
         {

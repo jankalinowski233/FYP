@@ -6,11 +6,13 @@ using UnityEngine.Events;
 public class EventTrigger : MonoBehaviour
 {
     public UnityEvent OnPlayerTrigger;
+    public UnityEvent OnEnemyTrigger;
     public UnityEvent OnDestructableTrigger;
 
     [Header("Exits")]
     [Space(15f)]
     public UnityEvent OnPlayerExit;
+    public UnityEvent OnEnemyExit;
     public UnityEvent OnDestructableExit;
 
     public void OnTriggerEnter(Collider other)
@@ -18,6 +20,9 @@ public class EventTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
             OnPlayerTrigger.Invoke();
 
+        if (other.CompareTag("Target"))
+            OnEnemyTrigger.Invoke();
+        
         if (other.CompareTag("Destructable"))
             OnDestructableTrigger.Invoke();          
     }
@@ -26,6 +31,9 @@ public class EventTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
             OnPlayerExit.Invoke();
+
+        if (other.CompareTag("Target"))
+            OnEnemyExit.Invoke();
 
         if (other.CompareTag("Destructable"))
             OnDestructableExit.Invoke();

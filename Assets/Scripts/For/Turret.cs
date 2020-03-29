@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Aim : MonoBehaviour
+public abstract class TAim : MonoBehaviour
 {
-    public List<GameObject> drones;
+    public List<GameObject> drones = new List<GameObject>();
     [SerializeField]
     protected float oldDistance;
 
     protected void Start()
     {
+        oldDistance = 25.0f;
         GameObject[] ds = GameObject.FindGameObjectsWithTag("Target");
-        
-        foreach(GameObject d in ds)
+
+        foreach (GameObject d in ds)
         {
             drones.Add(d);
             d.GetComponent<Drone>().deathEvent += RemoveDrone;
@@ -31,36 +32,52 @@ public abstract class Aim : MonoBehaviour
 public class Turret : MonoBehaviour
 {
     public float dmg;
+    public float rotationSpeed;
+
     public Drone target;
     public Transform turret;
-    public Aim aim;
+    public TAim aim;
+
+    LineRenderer line;
+    public ParticleSystem laserBeamStart;
+    public Transform laserStart;
 
     // Start is called before the first frame update
     void Start()
     {
-        aim = GetComponent<TurretAim>();
+        line = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
     protected void Update()
     {
-        target = aim.FindTarget();
-
-        if(target != null)
+        if(aim != null)
         {
+            target = aim.FindTarget();
+        }
+
+        if (target != null)
+        {
+            // Calculate rotation
             Vector3 targetRotation = target.transform.position - turret.position;
             targetRotation.y = 0f;
             turret.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(targetRotation), 1f);
 
             target.TakeDamage(dmg);
-        }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Target"))
+            // Show line from a turret to the enemy
+            line.enabled = true;
+            laserBeamStart.Play();
+
+            line.SetPosition(0, laserStart.position);
+            line.SetPosition(1, target.transform.position);
+        }
+        else
         {
-            // Game over
+            line.enabled = false;
+            laserBeamStart.Stop();
+
+            turret.rotation *= Quaternion.AngleAxis(Time.deltaTime * rotationSpeed, Vector3.up);
         }
     }
 }

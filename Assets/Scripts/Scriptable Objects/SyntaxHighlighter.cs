@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Text.RegularExpressions;
+
 public class SyntaxHighlighter
 {
     public static string HighlightCode(string code, SyntaxTheme theme)
@@ -9,7 +9,7 @@ public class SyntaxHighlighter
         string highlightedCode = "";
 
         string[] codeLines = code.Split('\n');
-
+        
         for (int i = 0; i < codeLines.Length; i++)
         {
             highlightedCode += Highlight(codeLines[i], theme);

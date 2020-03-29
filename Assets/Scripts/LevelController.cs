@@ -59,4 +59,9 @@ public class LevelController : MonoBehaviour
     {
         Time.timeScale = scale;
     }
+
+    public void InvokeLose()
+    {
+        OnLoseCondition.Invoke();
+    }
 }
