@@ -100,6 +100,7 @@ public static class Keywords
     {
         "MovePlayer",
         "TAim",
-        "Drone"
+        "Drone",
+        "ShipAttack"
     };
 }

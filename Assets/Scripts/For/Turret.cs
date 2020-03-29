@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class TAim : MonoBehaviour
 {
@@ -42,6 +43,9 @@ public class Turret : MonoBehaviour
     public ParticleSystem laserBeamStart;
     public Transform laserStart;
 
+    public Text lookingText;
+    public Text foundText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +75,9 @@ public class Turret : MonoBehaviour
 
             line.SetPosition(0, laserStart.position);
             line.SetPosition(1, target.transform.position);
+
+            lookingText.color = new Color(lookingText.color.r, lookingText.color.g, lookingText.color.b, 0.2f);
+            foundText.color = new Color(foundText.color.r, foundText.color.g, foundText.color.b, 1.0f);
         }
         else
         {
@@ -78,6 +85,9 @@ public class Turret : MonoBehaviour
             laserBeamStart.Stop();
 
             turret.rotation *= Quaternion.AngleAxis(Time.deltaTime * rotationSpeed, Vector3.up);
+
+            lookingText.color = new Color(lookingText.color.r, lookingText.color.g, lookingText.color.b, 1.0f);
+            foundText.color = new Color(foundText.color.r, foundText.color.g, foundText.color.b, 0.2f);
         }
     }
 }
