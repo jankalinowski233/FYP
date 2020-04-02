@@ -51,6 +51,17 @@ public class PlayerShip : Ship
     {
         if(att != null)
             att.Aim(shouldShoot);
+
+        if (shouldShoot == true)
+        {
+            shootText.color = new Color(shootText.color.r, shootText.color.g, shootText.color.b, 1.0f);
+            aimText.color = new Color(aimText.color.r, aimText.color.g, aimText.color.b, 0.2f);
+        }
+        else
+        {
+            shootText.color = new Color(shootText.color.r, shootText.color.g, shootText.color.b, 0.2f);
+            aimText.color = new Color(aimText.color.r, aimText.color.g, aimText.color.b, 1.0f);
+        }
     }
 
     public override void Die()
@@ -61,16 +72,5 @@ public class PlayerShip : Ship
     public void SetShoot(bool shoot)
     {
         shouldShoot = shoot;
-
-        if(shouldShoot == true)
-        {
-            shootText.color = new Color(shootText.color.r, shootText.color.g, shootText.color.b, 1.0f);
-            aimText.color = new Color(aimText.color.r, aimText.color.g, aimText.color.b, 0.2f);
-        }
-        else
-        {
-            shootText.color = new Color(shootText.color.r, shootText.color.g, shootText.color.b, 0.2f);
-            aimText.color = new Color(aimText.color.r, aimText.color.g, aimText.color.b, 1.0f);
-        }
     }
 }
