@@ -46,7 +46,8 @@ public static class Keywords
         "switch",
         "case",
         "char",
-        "override"
+        "override",
+        "out"
     };
 
     public static readonly string[] breakChars = { "<", ">", ".", ";", "[", "]", "{", "}", "(", ")", ",", "+", ":" };
@@ -93,7 +94,12 @@ public static class Keywords
         "GameObject",
         "Time",
         "Vector2",
-        "Vector3"
+        "Vector3",
+        "Animator",
+        "LayerMask",
+        "Ray",
+        "RaycastHit",
+        "Physics"
     };
 
     public static readonly string[] customClasses =
@@ -101,6 +107,7 @@ public static class Keywords
         "MovePlayer",
         "TAim",
         "Drone",
-        "ShipAttack"
+        "ShipAttack",
+        "PlayerMove"
     };
 }

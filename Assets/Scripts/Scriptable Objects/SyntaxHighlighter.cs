@@ -77,45 +77,9 @@ public class SyntaxHighlighter
                 break;
             }
 
-            if (words[i].StartsWith(Keywords.charMark))
+            if (words[i].StartsWith(Keywords.charMark) || words[i].StartsWith(Keywords.quotationMark))
             {
                 c = theme.stringColor;
-            }
-
-            if (words[i].Contains(Keywords.quotationMark))
-            {
-                string beforeSub = line.Substring(0, line.IndexOf('"'));
-                string sub = line.Substring(line.IndexOf('"'));
-                List<int> positions = new List<int>();
-
-                for(int j = 0; j < sub.Length; j++)
-                {
-                    if (sub[j] == '"')
-                    {
-                        int temp = j;
-                        temp += beforeSub.Length;
-                        positions.Add(temp);
-                    }
-                }
-
-                if(positions.Count >= 2)
-                {
-                    for (int k = 0; k < positions.Count; k++)
-                    {
-                        if(positions.Count % 2 != 0)
-                        {
-                            break;
-                        }
-
-                        wordStartEnd.Add(new Vector2Int(positions[k], positions[k + 1] + 1));
-                        c = theme.stringColor;
-                        colors.Add(c);
-                        k++;
-                    }
-                    break;
-                }
-
-                
             }
            
             for (int j = 0; j < Keywords.blueWords.Length; j++)

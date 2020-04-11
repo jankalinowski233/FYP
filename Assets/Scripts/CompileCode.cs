@@ -2,6 +2,7 @@
 using System.CodeDom.Compiler;
 using System.Reflection;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -144,8 +145,9 @@ public class CompileCode : MonoBehaviour
 
     public void ResetText()
     {
+        charCount = container.defaultText.Length; // reset caret's anchor point
+        codeString = container.defaultText;
         container.visibleText = container.defaultText;
-        codeString = container.visibleText;
     }
 
     public void TextInput()

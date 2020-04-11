@@ -7,6 +7,9 @@ TagManager:
   - Target
   - GetStartedPanel
   - Destructable
+  - Obstacle
+  - RayStart
+  - PlayerBody
   layers:
   - Default
   - TransparentFX
@@ -16,8 +19,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Obstacle
+  - Ground
   - 
   - 
   - 

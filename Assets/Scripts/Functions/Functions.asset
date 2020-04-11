@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab11114e60c16c64c8c3bd9311a90eba, type: 3}
+  m_Name: Functions
+  m_EditorClassIdentifier: 
+  hiddenText: "using UnityEngine;\nusing System.Collections.Generic;\n\npublic class
+    TestClass\n{\nstatic List<MonoBehaviour> m = new List<MonoBehaviour>();\n\n\tpublic
+    static void TestFunction()\n\t{\t\nGameObject player = GameObject.FindGameObjectWithTag(\"Player\");\n\t\tFunctionsPlayerMove
+    funcPlayerMove =\tplayer.gameObject.AddComponent<FunctionsPlayerMove>();\n\t\tMonoBehaviour[]
+    b = \tplayer.gameObject.GetComponents<MonoBehaviour>();\n\n\tforeach(MonoBehaviour
+    mb in b)\n\t{\n\t\tm.Add(mb);\n\t}\n\t\n\t\tif(m.Count > 2)\n\t\t{\tGameObject.Destroy(m[1]);\t\t\tm.RemoveAt(1);\n\t\t}\n\n
+    \          TextController cont = player.gameObject.GetComponent<TextController>();\ncont.move
+    = funcPlayerMove;\n\n\t}\n}"
+  visibleText: "public class FunctionsPlayerMove : PlayerMove\r\n{\r\n    float jumpHeight
+    = 120.0f;\r\n\r\n    float rayDistance = 1.0f;\r\n    Transform rayStart;\r\n
+    \   Transform groundDetection;\r\n\r\n    bool jumped = false;\r\n\r\n    protected
+    override void Start()\r\n    {\r\n        moveSpeed = 5.0f;\r\n        axis =
+    new Vector3(0, 0, 1.0f);\r\n\r\n        rayStart = GameObject.FindGameObjectWithTag(\"RayStart\").transform;\r\n
+    \       groundDetection = GameObject.FindGameObjectWithTag(\"PlayerBody\").transform;\r\n\r\n
+    \       anim = GetComponentInChildren<Animator>();\r\n        rb = GetComponentInChildren<Rigidbody>();\r\n
+    \   }\r\n\r\n    protected override void Update()\r\n    {\r\n        Vector3
+    temp = transform.position;\r\n        \r\n        if (axis.x > 0)\r\n            temp.x
+    += axis.x * moveSpeed * Time.deltaTime;\r\n        else if (axis.y > 0)\r\n            temp.y
+    += axis.y * moveSpeed * Time.deltaTime;\r\n        else if (axis.z > 0)\r\n            temp.z
+    += axis.z * moveSpeed * Time.deltaTime;\r\n        \r\n        transform.position
+    = temp;\r\n\r        anim.SetFloat(\"speed\", moveSpeed);\n\n        if (Detect()
+    == true && jumped == false)\r\n        {\r\n            Jump();\r\n        }\r\n\r\n
+    \       Collider[] isOnGround = Physics.OverlapSphere(groundDetection.position,
+    0.05f, LayerMask.GetMask(\"Ground\"));\r\n\r\n        if (isOnGround.Length >
+    0)\r\n        {\r\n            jumped = false;\r\n            anim.SetBool(\"jump\",
+    jumped);\r\n        }\r\n    }\r\n\r\n    public void Jump()\r\n    {\r\n        jumped
+    = true;\r\n        rb.AddForce(new Vector3(0.0f, jumpHeight, 0.0f));\r\n        anim.SetBool(\"jump\",
+    jumped);\r\n    }\r\n\r\n    bool Detect()\r\n    {\r\n        Ray ray = new Ray(rayStart.position,
+    new Vector3(rayStart.position.x, 0.0f, rayStart.position.z));\r\n        RaycastHit
+    rayHit;\r\n\r\n        return Physics.Raycast(ray, out rayHit, rayDistance, LayerMask.GetMask(\"Obstacle\"));\r\n
+    \   }\n}\r\n"
+  defaultText: "public class FunctionsPlayerMove : PlayerMove\r\n{\r\n    float jumpHeight
+    = 120.0f;\r\n\r\n    float rayDistance = 1.0f;\r\n    Transform rayStart;\r\n
+    \   Transform groundDetection;\r\n\r\n    bool jumped = false;\r\n\r\n    protected
+    override void Start()\r\n    {\r\n        moveSpeed = 5.0f;\r\n        axis =
+    new Vector3(0, 0, 1.0f);\r\n\r\n        rayStart = GameObject.FindGameObjectWithTag(\"RayStart\").transform;\r\n
+    \       groundDetection = GameObject.FindGameObjectWithTag(\"PlayerBody\").transform;\r\n\r\n
+    \       anim = GetComponentInChildren<Animator>();\r\n        rb = GetComponentInChildren<Rigidbody>();\r\n
+    \       anim.SetFloat(\"speed\", moveSpeed);\n    }\r\n\r\n    protected override
+    void Update()\r\n    {\r\n        Vector3 temp = transform.position;\r\n        \r\n
+    \       if (axis.x > 0)\r\n            temp.x += axis.x * moveSpeed * Time.deltaTime;\r\n
+    \       else if (axis.y > 0)\r\n            temp.y += axis.y * moveSpeed * Time.deltaTime;\r\n
+    \       else if (axis.z > 0)\r\n            temp.z += axis.z * moveSpeed * Time.deltaTime;\r\n
+    \       \r\n        transform.position = temp;\r\n\r        anim.SetFloat(\"speed\",
+    moveSpeed);\n\n        if (Detect() == true && jumped == false)\r\n        {\r\n
+    \           Jump();\r\n        }\r\n\r\n        Collider[] isOnGround = Physics.OverlapSphere(groundDetection.position,
+    0.05f, LayerMask.GetMask(\"Ground\"));\r\n\r\n        if (isOnGround.Length >
+    0)\r\n        {\r\n            jumped = false;\r\n            anim.SetBool(\"jump\",
+    jumped);\r\n        }\r\n    }\r\n\r\n    public void Jump()\r\n    {\r\n        jumped
+    = true;\r\n        rb.AddForce(new Vector3(0.0f, jumpHeight, 0.0f));\r\n        anim.SetBool(\"jump\",
+    jumped);\r\n    }\r\n\r\n    bool Detect()\r\n    {\r\n        //You have to write
+    this function\n\n        //Create a ray\n\r        //Create a raycast hit\n\n
+    \       //Return true if ray hit anything; otherwise return false\n        return
+    false;\n    }\r\n}\r\n"
+  loadText: "public class FunctionsPlayerMove : PlayerMove\r\n{\r\n    float jumpHeight
+    = 120.0f;\r\n\r\n    float rayDistance = 1.0f;\r\n    Transform rayStart;\r\n
+    \   Transform groundDetection;\r\n\r\n    bool jumped = false;\r\n\r\n    protected
+    override void Start()\r\n    {\r\n        moveSpeed = 5.0f;\r\n        axis =
+    new Vector3(0, 0, 1.0f);\r\n\r\n        rayStart = GameObject.FindGameObjectWithTag(\"RayStart\").transform;\r\n
+    \       groundDetection = GameObject.FindGameObjectWithTag(\"PlayerBody\").transform;\r\n\r\n
+    \       anim = GetComponentInChildren<Animator>();\r\n        rb = GetComponentInChildren<Rigidbody>();\r\n
+    \   }\r\n\r\n    protected override void Update()\r\n    {\r\n        Vector3
+    temp = transform.position;\r\n        \r\n        if (axis.x > 0)\r\n            temp.x
+    += axis.x * moveSpeed * Time.deltaTime;\r\n        else if (axis.y > 0)\r\n            temp.y
+    += axis.y * moveSpeed * Time.deltaTime;\r\n        else if (axis.z > 0)\r\n            temp.z
+    += axis.z * moveSpeed * Time.deltaTime;\r\n        \r\n        transform.position
+    = temp;\r\n\r        anim.SetFloat(\"speed\", moveSpeed);\n\n        if (Detect()
+    == true && jumped == false)\r\n        {\r\n            Jump();\r\n        }\r\n\r\n
+    \       Collider[] isOnGround = Physics.OverlapSphere(groundDetection.position,
+    0.05f, LayerMask.GetMask(\"Ground\"));\r\n\r\n        if (isOnGround.Length >
+    0)\r\n        {\r\n            jumped = false;\r\n            anim.SetBool(\"jump\",
+    jumped);\r\n        }\r\n    }\r\n\r\n    public void Jump()\r\n    {\r\n        jumped
+    = true;\r\n        rb.AddForce(new Vector3(0.0f, jumpHeight, 0.0f));\r\n        anim.SetBool(\"jump\",
+    jumped);\r\n    }\r\n\r\n    bool Detect()\r\n    {\r\n        Ray ray = new Ray(rayStart.position,
+    new Vector3(rayStart.position.x, 0.0f, rayStart.position.z));\r\n        RaycastHit
+    rayHit;\r\n\r\n        return Physics.Raycast(ray, out rayHit, rayDistance, LayerMask.GetMask(\"Obstacle\"));\r\n
+    \   }\n}\r\n"
