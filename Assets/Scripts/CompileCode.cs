@@ -6,36 +6,37 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// Binds the code in the runtime
-/// </summary>
+// Binds the code in the runtime
 public class CompileCode : MonoBehaviour
 {
-    public static CompileCode instance;
+    public static CompileCode instance; // Instance
 
-    public SyntaxTheme codeTheme;
-    public TextContainer container;
+    public SyntaxTheme codeTheme; // Theme
+    public TextContainer container; // Code text container
 
-    public Text errorText;
+    public Text errorText; // In-game console error texts
 
-    List<MethodInfo> methods;
+    List<MethodInfo> methods; // List of runtime methods
 
-    [Header("Custom text input")]
+    [Header("Custom text input")] // Custom text input properties
     [Space(5f)]
-    int charCount;
+    int charCount; // Code text
     int lineCount;
     public string codeString;
     public Text codeToDisplay;
-    public float caretBlinkRate;
+
+    public float caretBlinkRate; // Caret
     float caretBlinkTimer;
     public GameObject caret;
     RectTransform caretRect;
     public Vector3 caretOffset;
-    public float timeBtwInputs;
+
+    public float timeBtwInputs; // Input timer
     float remainingTimeBtwInputs;
 
     private void Awake()
     {
+        // Init
         if (instance == null)
             instance = this;
     }
@@ -43,26 +44,27 @@ public class CompileCode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Init
         methods = new List<MethodInfo>();
 
-        codeString = "";
+        codeString = ""; // Init code string
         codeString = container.visibleText;     
         errorText.text = "";
 
-        charCount = codeString.Length;
+        charCount = codeString.Length; // Calculate number of lines
         string[] lines = codeString.Split('\n');
         lineCount = lines.Length-1;
 
-        caretRect = caret.GetComponent<RectTransform>();
+        caretRect = caret.GetComponent<RectTransform>(); // Init caret
         codeToDisplay.supportRichText = true;
         codeToDisplay.text = codeString;
     }
 
     private void Update()
     {
-        if(codeToDisplay.IsActive() == true)
+        if(codeToDisplay.IsActive() == true) // If input console is active
         {
-            if(remainingTimeBtwInputs <= 0)
+            if(remainingTimeBtwInputs <= 0) // If players are allowed to input
             {
                 TextInput();
                 SpecialKeysInput();               
@@ -72,29 +74,29 @@ public class CompileCode : MonoBehaviour
                 remainingTimeBtwInputs -= Time.deltaTime;
             }
 
-            HandleCaret(codeString);
+            HandleCaret(codeString); // Blink caret
         }
         
-        codeToDisplay.text = SyntaxHighlighter.HighlightCode(codeString, codeTheme);
+        codeToDisplay.text = SyntaxHighlighter.HighlightCode(codeString, codeTheme); // Highlight code
     }
 
-    public void Run()
+    public void Run() // Compiles code
     {
-        Assembly assembly = Compile(container.hiddenText + codeString); //compile code from text
-        MethodInfo function = assembly.GetType("TestClass").GetMethod("TestFunction"); //process a class and a function
+        Assembly assembly = Compile(container.hiddenText + codeString); // Compile code from text
+        MethodInfo function = assembly.GetType("TestClass").GetMethod("TestFunction"); // Process a class and a function
 
-        //add methods to the list
+        // Add methods to the list
         methods.Add(function);
 
-        //make sure the list doesn't grow like crazy if users mash COMPILE button
+        // Make sure the list doesn't grow like crazy if users mash COMPILE button
         if (methods.Count > 1)
         {
             methods.RemoveAt(0);
         }
 
-        //create a delegate and invoke it
-        //Action is a special delegate, that can invoke a void function or in general take up to 16 parameters of different types
-        //While in a classic delegate users have to provide a parameter they're going to pass, Action overcomes that issue
+        // Create a delegate and invoke it
+        // Action is a special delegate, that can invoke a void function or in general take up to 16 parameters of different types
+        // While in a classic delegate users have to provide a parameter they're going to pass, Action overcomes that issue
         foreach (MethodInfo method in methods)
         {
             Action codeAction = (Action)Delegate.CreateDelegate(typeof(Action), method);
@@ -145,29 +147,29 @@ public class CompileCode : MonoBehaviour
 
     public void ResetText()
     {
-        charCount = container.defaultText.Length; // reset caret's anchor point
-        codeString = container.defaultText;
+        charCount = container.defaultText.Length; // Reset caret's anchor point
+        codeString = container.defaultText; // Reset text
         container.visibleText = container.defaultText;
     }
 
-    public void TextInput()
+    public void TextInput() // Input text
     {
-        string inputString = Input.inputString;
+        string inputString = Input.inputString; // If pressed key is contained in allowed input characters
         foreach(char character in inputString)
         {
             if(Keywords.inputCharacters.Contains(character.ToString()))
             {
-                if (codeString == "")
-                    codeString += character;
+                if (codeString == "") // If code string is not empty...
+                    codeString += character; // ...add a character...
                 else
-                    codeString = codeString.Insert(charCount, character.ToString());
+                    codeString = codeString.Insert(charCount, character.ToString()); // ...ekse simply insert a character
                
-                charCount++;
+                charCount++; // Increment character count
             }        
         }
     }
 
-    public void SpecialKeysInput()
+    public void SpecialKeysInput() // Check for special keys input
     {
         if(Input.GetKeyDown(KeyCode.Return)) // add new line upon ENTER press
         {
@@ -275,7 +277,7 @@ public class CompileCode : MonoBehaviour
         
     }
 
-    void HandleCaret(string t)
+    void HandleCaret(string t) // Blink caret
     {
         string stopChar = ".";
         codeToDisplay.text = stopChar;

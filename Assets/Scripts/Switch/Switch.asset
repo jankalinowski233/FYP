@@ -23,11 +23,15 @@ MonoBehaviour:
     speed = 0.0f;\n                         // True if player's position is greater
     than oxygen canister's position\n                         bool position = gameObject.transform.position.x
     > t.transform.position.x;\n\t\n                          switch(position)\n                          {\n
-    \                         }\n\n                          return speed;\n                 }\n}"
+    \                             // Check if position is true or false\n                              //
+    Move left or right accordingly\n                          }\n\t\t\t\n                          return
+    speed;\n                 }\n}"
   defaultText: "public class Move : MovePlayer\n{\t\n                public override
     float MoveTo(GameObject t)\n                {\n                         float
     speed = 0.0f;\n                         // True if player's position is greater
     than oxygen canister's position\n                         bool position = gameObject.transform.position.x
     > t.transform.position.x;\n\t\n                          switch(position)\n                          {\n
-    \                         }\n\t\t\t\n                          return speed;\n
-    \                }\n}"
+    \                             // Check if position is true or false\n                              //
+    Move left or right accordingly\n                          }\n\t\t\t\n                          return
+    speed;\n                 }\n}"
+  loadText: 

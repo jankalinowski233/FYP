@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+// Triggers events
+// Easily reusable
 public class EventTrigger : MonoBehaviour
 {
     public UnityEvent OnPlayerTrigger;

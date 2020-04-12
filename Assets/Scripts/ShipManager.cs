@@ -3,34 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
+// Controls menu ships
 public class ShipManager : MonoBehaviour
 {
-    float timeLeft;
+    float timeLeft; // Timer
     public float maxTime;
 
-    [System.Serializable]
+    [System.Serializable] // A container class
     public class CartHolder
     {
         public string key;
         public List<CinemachineDollyCart> cart;
     }
 
-    [SerializeField]
+    [SerializeField] // Array of carts
     CartHolder[] holders;
 
-    [SerializeField]
+    [SerializeField] // Dictionary of a string to a list
     Dictionary<string, List<CinemachineDollyCart>> carts = new Dictionary<string, List<CinemachineDollyCart>>();
 
     // Start is called before the first frame update
     void Start()
     {
+        // Init
         foreach(CartHolder holder in holders)
         {
-            carts.Add(holder.key, holder.cart);
+            carts.Add(holder.key, holder.cart); // Add a cart to a dictionary
 
             foreach (CinemachineDollyCart c in holder.cart)
             {
-                c.enabled = false;
+                c.enabled = false; // Disable all carts initially
             }
         }
     }
@@ -38,10 +40,10 @@ public class ShipManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeLeft += Time.deltaTime;
+        timeLeft += Time.deltaTime; // If timer
         if(timeLeft >= maxTime)
         {
-            int random = Random.Range(0, carts.Count);
+            int random = Random.Range(0, carts.Count); // Enable random ship(s)
             string k = "";
 
             switch(random)
@@ -67,11 +69,11 @@ public class ShipManager : MonoBehaviour
             }
 
             TriggerTrack(k);
-            timeLeft = 0;
+            timeLeft = 0; // Reset timer
         }
     }
 
-    void TriggerTrack(string key)
+    void TriggerTrack(string key) // Enable all Cinemachine carts associated with a key
     {
         foreach(CinemachineDollyCart cart in carts[key])
         {

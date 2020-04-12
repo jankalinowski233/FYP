@@ -9,6 +9,7 @@ public class InitLevels : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Load saved code from completed/attempted levels
         SceneController sc = FindObjectOfType<SceneController>();
 
         for (int i = 0; i < containers.Count; i++)

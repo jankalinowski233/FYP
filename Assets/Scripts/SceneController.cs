@@ -2,33 +2,35 @@
 using UnityEngine.SceneManagement;
 using System.IO;
 
+// Controls scenes
 public class SceneController : MonoBehaviour
 {
-    CompileCode c;
+    CompileCode c; // Reference to compile code script
 
     private void Awake()
     {
+        // Init
         c = GetComponent<CompileCode>();
     }
 
-    public void LoadLevel(string levelName)
+    public void LoadLevel(string levelName) // Loads a level
     {
         SceneManager.LoadScene(levelName);
     }
 
-    public void RestartLevel()
+    public void RestartLevel() // Restarts a level
     {
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(sceneIndex);
     }
 
-    public void UnlockLevel()
+    public void UnlockLevel() // Unlocks a next level
     {
         PlayerPrefs.SetInt("levelUnlocked", SceneManager.GetActiveScene().buildIndex + 1);
         PlayerPrefs.SetInt("time" + SceneManager.GetActiveScene().buildIndex.ToString(), (int)Time.timeSinceLevelLoad);
     }
 
-    public void SaveCode()
+    public void SaveCode() // Saves written code
     {
         // Saved to: C:/Users/name/AppData/LocalLow/DefaultCompany/ProjectName/LevelX.txt
         string directory = Application.persistentDataPath + "/Level" + SceneManager.GetActiveScene().buildIndex.ToString() + ".txt";
@@ -43,7 +45,7 @@ public class SceneController : MonoBehaviour
         writer.Close();
     }
 
-    public string LoadCode(int i)
+    public string LoadCode(int i) // Loads saved code (if exists)
     {      
         string directory = Application.persistentDataPath + "/Level" + i.ToString() + ".txt";
 
@@ -58,20 +60,20 @@ public class SceneController : MonoBehaviour
         return actualCode;
     }
 
-    public void SetCode()
+    public void SetCode() // Sets code
     {
-        int i = SceneManager.GetActiveScene().buildIndex;
-        if(LoadCode(i) != "")
+        int i = SceneManager.GetActiveScene().buildIndex; // Get active scene index
+        if(LoadCode(i) != "") // Load code associated with it
         {
             c.container.visibleText = LoadCode(i);
         }
-        else
+        else // If load code is empty
         {
             c.container.visibleText = c.container.defaultText;
         }
     }
 
-    public void Quit()
+    public void Quit() // Quits game
     {
         Application.Quit();
     }

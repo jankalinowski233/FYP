@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Rotator for an oxygen-canister
 public class Rotator : ObjectController
 {
     // Update is called once per frame
     void Update()
     {
-        transform.eulerAngles += new Vector3(0, 20f * Time.deltaTime, 0);
+        transform.eulerAngles += new Vector3(0, 20f * Time.deltaTime, 0); // Rotate
     }
 
-    public void SwitchPosition()
+    public void SwitchPosition() // Switch position if player has collected it
     {
         switch (transform.position.x)
         {

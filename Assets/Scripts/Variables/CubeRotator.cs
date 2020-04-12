@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Rotator for medkits
 public class CubeRotator : ObjectController
 {
     public float rotationSpeed;
@@ -16,7 +17,7 @@ public class CubeRotator : ObjectController
     {
         if(other.CompareTag("Player"))
         {
-            InvokeEvents();
+            InvokeEvents(); // Invoke events upon collection
             Destroy(gameObject);
         }
     }

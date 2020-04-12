@@ -11,12 +11,13 @@ public class DroneUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>(); // Find main camera in the scene
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Rotate UI to the camera
         Quaternion rotation;
         Vector3 objToCameraVector = mainCamera.transform.position - transform.position;
 

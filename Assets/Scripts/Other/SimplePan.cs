@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Not used
+// Simple pan script
 public class SimplePan : MonoBehaviour
 {
     public Vector3 panAxis;
@@ -19,6 +21,7 @@ public class SimplePan : MonoBehaviour
             timeLeft = 0.0f;
         }
 
-        transform.position += transform.TransformDirection(panAxis * speed * Time.deltaTime);
+        transform.position += transform.TransformDirection(panAxis * speed * Time.deltaTime); // Pan from point A to point B
+                                                                                            // On a given axis with a given speed
     }
 }

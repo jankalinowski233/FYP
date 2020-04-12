@@ -6,9 +6,10 @@ using UnityEngine.Events;
 
 public class Drone : MonoBehaviour
 {
-    public delegate void Death(GameObject d);
+    public delegate void Death(GameObject d); // Death event delegate
     public Death deathEvent;
 
+    // Drone properties
     public Transform t;
     public float speed;
 
@@ -17,16 +18,16 @@ public class Drone : MonoBehaviour
     public Image healthBar;
 
     public ParticleSystem hitEffect;
-    public UnityEvent OnDeath;
+    public UnityEvent OnDeath; // Unity Event to be triggered when a drone dies
 
     public GameObject deathParticles;
 
     private void Start()
     {
-        remainingHealth = health;
+        remainingHealth = health; // Init health
     }
 
-    public void TakeDamage(float dmg)
+    public void TakeDamage(float dmg) // Deals damage to a drone
     {
         remainingHealth -= dmg;
         healthBar.fillAmount = remainingHealth / health;
@@ -34,15 +35,15 @@ public class Drone : MonoBehaviour
 
         if(remainingHealth <= 0)
         {
-            Die();
+            Die(); // Die if health is less than 0
         }
     }
 
     public void Die()
     {
         deathEvent?.Invoke(gameObject); // invoke delegate
-        OnDeath.Invoke();
-        GameObject x = Instantiate(deathParticles, transform.position, Quaternion.identity);
+        OnDeath.Invoke(); // Invoke UnityEvent
+        GameObject x = Instantiate(deathParticles, transform.position, Quaternion.identity); // Instantiate particles
         gameObject.SetActive(false);
     }
 }

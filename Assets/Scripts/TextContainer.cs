@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+// A container for an in-game code
+// Scriptable object, so it's easily created in an inspector
 [CreateAssetMenu]
 public class TextContainer : ScriptableObject
 {

@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+// A level controller for switch level
 public class SwitchLevelController : LevelController
 { 
-    public float timer;
+    public float timer; // Timer
     public Text timerText;
 
     // Update is called once per frame
@@ -14,7 +15,7 @@ public class SwitchLevelController : LevelController
     {
         base.Update();
 
-        if(timer > 0)
+        if(timer > 0) // Decrement & display time
         {
             timer -= Time.deltaTime;
             timerText.text = timer.ToString("0");
