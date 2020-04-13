@@ -5,7 +5,7 @@ using System.IO;
 // Controls scenes
 public class SceneController : MonoBehaviour
 {
-    CompileCode c; // Reference to compile code script
+    public CompileCode c; // Reference to compile code script
 
     private void Awake()
     {
@@ -13,7 +13,7 @@ public class SceneController : MonoBehaviour
         c = GetComponent<CompileCode>();
     }
 
-    public void LoadLevel(string levelName) // Loads a level
+    public void LoadLevel(string levelName) // Loads a scene
     {
         SceneManager.LoadScene(levelName);
     }
@@ -34,7 +34,6 @@ public class SceneController : MonoBehaviour
     {
         // Saved to: C:/Users/name/AppData/LocalLow/DefaultCompany/ProjectName/LevelX.txt
         string directory = Application.persistentDataPath + "/Level" + SceneManager.GetActiveScene().buildIndex.ToString() + ".txt";
-
         string saveStr = c.codeString;
 
         c.container.visibleText = saveStr;

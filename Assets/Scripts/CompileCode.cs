@@ -16,7 +16,7 @@ public class CompileCode : MonoBehaviour
 
     public Text errorText; // In-game console error texts
 
-    List<MethodInfo> methods; // List of runtime methods
+    public List<MethodInfo> methods = new List<MethodInfo>(); // List of runtime methods
 
     [Header("Custom text input")] // Custom text input properties
     [Space(5f)]
@@ -37,16 +37,13 @@ public class CompileCode : MonoBehaviour
     private void Awake()
     {
         // Init
-        if (instance == null)
-            instance = this;
+        CreateInstance();   
     }
 
     // Start is called before the first frame update
     void Start()
     {
         // Init
-        methods = new List<MethodInfo>();
-
         codeString = ""; // Init code string
         codeString = container.visibleText;     
         errorText.text = "";
@@ -80,19 +77,21 @@ public class CompileCode : MonoBehaviour
         codeToDisplay.text = SyntaxHighlighter.HighlightCode(codeString, codeTheme); // Highlight code
     }
 
+    public void CreateInstance()
+    {
+        if (instance == null)
+            instance = this;
+    }
+
     public void Run() // Compiles code
     {
         Assembly assembly = Compile(container.hiddenText + codeString); // Compile code from text
         MethodInfo function = assembly.GetType("TestClass").GetMethod("TestFunction"); // Process a class and a function
 
+        // First of, clear the list
+        methods.Clear();
         // Add methods to the list
         methods.Add(function);
-
-        // Make sure the list doesn't grow like crazy if users mash COMPILE button
-        if (methods.Count > 1)
-        {
-            methods.RemoveAt(0);
-        }
 
         // Create a delegate and invoke it
         // Action is a special delegate, that can invoke a void function or in general take up to 16 parameters of different types
@@ -102,7 +101,7 @@ public class CompileCode : MonoBehaviour
             Action codeAction = (Action)Delegate.CreateDelegate(typeof(Action), method);
 
             //invoke delegate (execute code)
-            codeAction.Invoke();
+            codeAction.Invoke();          
         }
     }
 

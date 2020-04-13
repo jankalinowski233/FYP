@@ -24,14 +24,18 @@ public class Drone : MonoBehaviour
 
     private void Start()
     {
-        remainingHealth = health; // Init health
+        SetRemainingHealth(health); // Init health
     }
 
     public void TakeDamage(float dmg) // Deals damage to a drone
     {
         remainingHealth -= dmg;
-        healthBar.fillAmount = remainingHealth / health;
-        hitEffect.Play();
+
+        if(healthBar != null)
+            healthBar.fillAmount = remainingHealth / health;
+
+        if(hitEffect != null)
+            hitEffect.Play();
 
         if(remainingHealth <= 0)
         {
@@ -45,5 +49,15 @@ public class Drone : MonoBehaviour
         OnDeath.Invoke(); // Invoke UnityEvent
         GameObject x = Instantiate(deathParticles, transform.position, Quaternion.identity); // Instantiate particles
         gameObject.SetActive(false);
+    }
+
+    public void SetRemainingHealth(float h)
+    {
+        remainingHealth = h;
+    }
+
+    public float GetRemainingHealth()
+    {
+        return remainingHealth;
     }
 }

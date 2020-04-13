@@ -80,4 +80,14 @@ public class SwitchPlayerMove : PlayerMove
         goalReached = true;
         target = goalReachedTarget;
     }
+
+    public GameObject GetTarget() // Returns current target
+    {
+        return target;
+    }
+
+    public bool GetGoalReached() // Returns bool goal reached
+    {
+        return goalReached;
+    }
 }

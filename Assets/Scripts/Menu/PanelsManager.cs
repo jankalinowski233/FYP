@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PanelsManager : MonoBehaviour
 {
     public GameObject[] panels; // Array of all panels
-    int current; // current panel
+    public int current; // current panel
 
     private void Start()
     {
