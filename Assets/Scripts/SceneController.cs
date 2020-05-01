@@ -26,7 +26,13 @@ public class SceneController : MonoBehaviour
 
     public void UnlockLevel() // Unlocks a next level
     {
-        PlayerPrefs.SetInt("levelUnlocked", SceneManager.GetActiveScene().buildIndex + 1);
+        int unlocked = PlayerPrefs.GetInt("levelUnlocked", 1);
+
+        if(unlocked < SceneManager.GetActiveScene().buildIndex + 1)
+        {
+            PlayerPrefs.SetInt("levelUnlocked", SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        
         PlayerPrefs.SetInt("time" + SceneManager.GetActiveScene().buildIndex.ToString(), (int)Time.timeSinceLevelLoad);
     }
 

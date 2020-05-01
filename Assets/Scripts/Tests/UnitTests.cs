@@ -259,5 +259,7 @@ public class UnitTests
         lc.SetTimescale(0.2f);
 
         Assert.AreNotEqual(1.0f, Time.timeScale);
+
+        lc.SetTimescale(1.0f);
     }
 }

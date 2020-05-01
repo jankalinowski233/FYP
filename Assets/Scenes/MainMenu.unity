@@ -1070,11 +1070,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lorem ipsum arjn aiujndi waund iajndian astabat mater dolorosa twoja stara
-    aij diajs ioja oija ijoi jaio joi jio jioa joaj oidaj oidjao dijaois jdaos jdao
-    jdoai jdiao jdoia jdoiaj odija oidjao ijdasio jdaosij doais doiaj doiaj sdiojs
-    aoijsa ojdaoi jdaoj doaij daisj daioj diaoj doiaj doiaj doiaj dioaj idojaoi jdaios
-    jdaioj doiaj doiaj doaj odiaj oidj aoij daioj dioas oi2qaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  m_Text: 
 --- !u!222 &184285642
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3476,7 +3472,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: a18d6e4a04e9c774f956a1e9d7e0dabf,
             type: 2}
-          m_ObjectArgumentAssemblyTypeName: TextContainer, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: TextContainer, MainAssembly
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7681,7 +7677,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 3958670df0088b445b3f0cf21e88db9f,
             type: 2}
-          m_ObjectArgumentAssemblyTypeName: TextContainer, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: TextContainer, MainAssembly
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8522,7 +8518,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 2ee0ed0d540929841b8567005d6d40fe,
             type: 2}
-          m_ObjectArgumentAssemblyTypeName: TextContainer, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: TextContainer, MainAssembly
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8814,7 +8810,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 8b6665b40fd5fbd43adccfa2afcdff98,
             type: 2}
-          m_ObjectArgumentAssemblyTypeName: TextContainer, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: TextContainer, MainAssembly
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9615,7 +9611,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: cab4174f34c34b84a95bb2ba8bb35474,
             type: 2}
-          m_ObjectArgumentAssemblyTypeName: TextContainer, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: TextContainer, MainAssembly
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11868,6 +11864,7 @@ MonoBehaviour:
   - {fileID: 2072181221}
   - {fileID: 1272066833}
   - {fileID: 171786194}
+  current: 0
 --- !u!1 &2003903175 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1315359317690184, guid: 7b67899972e489147877c7ed1e558ca7,
@@ -12112,6 +12109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d65235d929ac254ab2b294d5bf552b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  c: {fileID: 0}
 --- !u!4 &2090280402
 Transform:
   m_ObjectHideFlags: 0
